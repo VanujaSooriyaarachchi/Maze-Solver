@@ -1,0 +1,378 @@
+# baseURI: http://topbraid.org/skos.shapes
+# imports: http://datashapes.org/dash
+# imports: http://www.w3.org/2004/02/skos/core
+# prefix: skosshapes
+
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosshapes: <http://topbraid.org/skos.shapes#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix swa: <http://topbraid.org/swa#> .
+@prefix tosh: <http://topbraid.org/tosh#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://topbraid.org/skos.shapes>
+  rdf:type owl:Ontology ;
+  rdfs:comment """A collection of SKOS constraints expressed using SHACL.
+
+Implements SKOS constraint S36, defined for class skos:OrderedCollection and uses auxiliary function skosshapes:checkMembers.  Constraints S13, S14, S27, and S46 are defined for class skos:Concept and rely on sh:disjoint and sh:uniqueLang.""" ;
+  rdfs:label "SKOS SHACL shapes" ;
+  owl:imports <http://datashapes.org/dash> ;
+  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  sh:declare [
+      rdf:type sh:PrefixDeclaration ;
+      sh:namespace "http://topbraid.org/skos.shapes#"^^xsd:anyURI ;
+      sh:prefix "skosshapes" ;
+    ] ;
+  sh:declare [
+      rdf:type sh:PrefixDeclaration ;
+      sh:namespace "http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI ;
+      sh:prefix "rdf" ;
+    ] ;
+  sh:declare [
+      rdf:type sh:PrefixDeclaration ;
+      sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ;
+      sh:prefix "skos" ;
+    ] ;
+.
+skosshapes:checkMembers
+  rdf:type sh:SPARQLFunction ;
+  rdfs:comment "A helper function for constraint 36 on skos:OrderedCollection. For a given collection (?arg1) and a specific list node (?arg2), this checks whether the rdf:first of that list node is also a value of the collection's skos:member property. If successful, then it moves to the next list item (rdf:rest) and calls itself recursively until the rdf:nil is reached." ;
+  rdfs:label "check members" ;
+  sh:ask """ASK WHERE {
+    ?arg2 rdf:first ?member .
+    ?arg1 skos:member ?member .
+    ?arg2 rdf:rest ?rest .
+	FILTER ((?rest = rdf:nil) || (skosshapes:checkMembers(?arg1, ?rest))) .
+}""" ;
+  sh:parameter [
+      rdf:type sh:Parameter ;
+      sh:path skosshapes:arg1 ;
+      sh:class skos:OrderedCollection ;
+      sh:description "The ordered collection to validated" ;
+      sh:name "arg1" ;
+      sh:nodeKind sh:IRI ;
+      sh:order 0 ;
+    ] ;
+  sh:parameter [
+      rdf:type sh:Parameter ;
+      sh:path skosshapes:arg2 ;
+      sh:description "The remaining elements of the list to be validated" ;
+      sh:name "arg2" ;
+      sh:nodeKind sh:BlankNodeOrIRI ;
+      sh:order 1 ;
+    ] ;
+  sh:prefixes <http://topbraid.org/skos.shapes> ;
+  sh:returnType xsd:boolean ;
+.
+skos:Concept
+  rdf:type sh:NodeShape ;
+  sh:property skos:Concept-altLabel ;
+  sh:property skos:Concept-broadMatch ;
+  sh:property skos:Concept-broader ;
+  sh:property skos:Concept-broader-inverse ;
+  sh:property skos:Concept-broader-nonRecursive ;
+  sh:property skos:Concept-changeNote ;
+  sh:property skos:Concept-closeMatch ;
+  sh:property skos:Concept-definition ;
+  sh:property skos:Concept-editorialNote ;
+  sh:property skos:Concept-exactMatch ;
+  sh:property skos:Concept-example ;
+  sh:property skos:Concept-hasTopConcept-inverse ;
+  sh:property skos:Concept-hiddenLabel ;
+  sh:property skos:Concept-historyNote ;
+  sh:property skos:Concept-notation ;
+  sh:property skos:Concept-note ;
+  sh:property skos:Concept-prefLabel ;
+  sh:property skos:Concept-related ;
+  sh:property skos:Concept-relatedMatch ;
+  sh:property skos:Concept-scopeNote ;
+  sh:property skos:Concept-type ;
+  sh:sparql [
+      sh:message "Concept seems to be an \"orphan\" - it has neither a broader concept nor is the top concept of a concept scheme." ;
+      sh:prefixes <http://topbraid.org/skos.shapes> ;
+      sh:select """SELECT $this
+WHERE {
+    FILTER NOT EXISTS { $this skos:broader ?anyBroader }
+    FILTER NOT EXISTS { ?anyScheme skos:hasTopConcept $this }
+}""" ;
+    ] ;
+.
+skos:Concept-altLabel
+  rdf:type sh:PropertyShape ;
+  sh:path skos:altLabel ;
+  sh:description "An alternative lexical label for a resource."@en ;
+  sh:disjoint skos:hiddenLabel ;
+  sh:group skos:LabelsAndDescriptionPropertyGroup ;
+  sh:or (
+      [
+        sh:datatype xsd:string ;
+      ]
+      [
+        sh:datatype rdf:langString ;
+      ]
+    ) ;
+  sh:order 1 ;
+.
+skos:Concept-broadMatch
+  rdf:type sh:PropertyShape ;
+  sh:path skos:broadMatch ;
+  sh:description "Used to state a hierarchical mapping link between two conceptual resources in different concept schemes."@en ;
+  sh:disjoint skos:relatedMatch ;
+  sh:group skos:MatchingRelationshipsPropertyGroup ;
+  sh:order 0 ;
+.
+skos:Concept-broader
+  rdf:type sh:PropertyShape ;
+  sh:path skos:broader ;
+  sh:description "Relates a concept to a concept that is more general in meaning."@en ;
+  sh:group skos:StandardRelationshipsPropertyGroup ;
+  sh:name "broader concept" ;
+  sh:order 0 ;
+.
+skos:Concept-broader-inverse
+  rdf:type sh:PropertyShape ;
+  sh:path [
+      sh:inversePath skos:broader ;
+    ] ;
+  sh:group skos:StandardRelationshipsPropertyGroup ;
+  sh:name "narrower concept" ;
+  sh:order 1 ;
+.
+skos:Concept-broader-nonRecursive
+  rdf:type sh:PropertyShape ;
+  sh:path [
+      sh:oneOrMorePath skos:broader ;
+    ] ;
+  dash:nonRecursive "true"^^xsd:boolean ;
+.
+skos:Concept-changeNote
+  rdf:type sh:PropertyShape ;
+  sh:path skos:changeNote ;
+  tosh:editWidget swa:RichTextEditor ;
+  sh:description "A note about a modification to a concept."@en ;
+  sh:group skos:NotesPropertyGroup ;
+  sh:order 1 ;
+.
+skos:Concept-closeMatch
+  rdf:type sh:PropertyShape ;
+  sh:path skos:closeMatch ;
+  sh:description "Used to link two concepts that are sufficiently similar that they can be used interchangeably in some information retrieval applications. In order to avoid the possibility of \"compound errors\" when combining mappings across more than two concept schemes, skos:closeMatch is not declared to be a transitive property."@en ;
+  sh:group skos:MatchingRelationshipsPropertyGroup ;
+  sh:order 1 ;
+.
+skos:Concept-definition
+  rdf:type sh:PropertyShape ;
+  sh:path skos:definition ;
+  tosh:editWidget swa:RichTextEditor ;
+  sh:description "A statement or formal explanation of the meaning of a concept."@en ;
+  sh:group skos:LabelsAndDescriptionPropertyGroup ;
+  sh:order 5 ;
+.
+skos:Concept-editorialNote
+  rdf:type sh:PropertyShape ;
+  sh:path skos:editorialNote ;
+  tosh:editWidget swa:RichTextEditor ;
+  sh:description "A note for an editor, translator or maintainer of the vocabulary."@en ;
+  sh:group skos:NotesPropertyGroup ;
+  sh:order 2 ;
+.
+skos:Concept-exactMatch
+  rdf:type sh:PropertyShape ;
+  sh:path skos:exactMatch ;
+  sh:description "Used to link two concepts, indicating a high degree of confidence that the concepts can be used interchangeably across a wide range of information retrieval applications. skos:exactMatch is a transitive property, and is a sub-property of skos:closeMatch."@en ;
+  sh:disjoint skos:broadMatch ;
+  sh:disjoint skos:relatedMatch ;
+  sh:group skos:MatchingRelationshipsPropertyGroup ;
+  sh:order 2 ;
+.
+skos:Concept-example
+  rdf:type sh:PropertyShape ;
+  sh:path skos:example ;
+  tosh:editWidget swa:RichTextEditor ;
+  sh:description "An example of the use of a concept."@en ;
+  sh:group skos:NotesPropertyGroup ;
+  sh:order 5 ;
+.
+skos:Concept-hasTopConcept-inverse
+  rdf:type sh:PropertyShape ;
+  sh:path [
+      sh:inversePath skos:hasTopConcept ;
+    ] ;
+  sh:group skos:LabelsAndDescriptionPropertyGroup ;
+  sh:name "top concept of" ;
+  sh:order 6 ;
+.
+skos:Concept-hiddenLabel
+  rdf:type sh:PropertyShape ;
+  sh:path skos:hiddenLabel ;
+  sh:description "A lexical label for a resource that should be hidden when generating visual displays of the resource, but should still be accessible to free text search operations."@en ;
+  sh:group skos:LabelsAndDescriptionPropertyGroup ;
+  sh:or (
+      [
+        sh:datatype xsd:string ;
+      ]
+      [
+        sh:datatype rdf:langString ;
+      ]
+    ) ;
+  sh:order 2 ;
+.
+skos:Concept-historyNote
+  rdf:type sh:PropertyShape ;
+  sh:path skos:historyNote ;
+  tosh:editWidget swa:RichTextEditor ;
+  sh:description "A note about the past state/use/meaning of a concept."@en ;
+  sh:group skos:NotesPropertyGroup ;
+  sh:order 3 ;
+.
+skos:Concept-notation
+  rdf:type sh:PropertyShape ;
+  sh:path skos:notation ;
+  sh:description "A notation, also known as classification code, is a string of characters such as \"T58.5\" or \"303.4833\" used to uniquely identify a concept within the scope of a given concept scheme."@en ;
+  sh:group skos:LabelsAndDescriptionPropertyGroup ;
+  sh:order 3 ;
+.
+skos:Concept-note
+  rdf:type sh:PropertyShape ;
+  sh:path skos:note ;
+  tosh:editWidget swa:RichTextEditor ;
+  sh:description "A general note, for any purpose."@en ;
+  sh:group skos:NotesPropertyGroup ;
+  sh:order 0 ;
+.
+skos:Concept-prefLabel
+  rdf:type sh:PropertyShape ;
+  sh:path skos:prefLabel ;
+  sh:description "The preferred lexical label for a resource, in a given language."@en ;
+  sh:disjoint skos:altLabel ;
+  sh:disjoint skos:hiddenLabel ;
+  sh:group skos:LabelsAndDescriptionPropertyGroup ;
+  sh:or (
+      [
+        sh:datatype xsd:string ;
+      ]
+      [
+        sh:datatype rdf:langString ;
+      ]
+    ) ;
+  sh:order 0 ;
+  sh:qualifiedMaxCount 1 ;
+  sh:qualifiedValueShape [
+      sh:datatype xsd:string ;
+    ] ;
+  sh:uniqueLang "true"^^xsd:boolean ;
+.
+skos:Concept-related
+  rdf:type sh:PropertyShape ;
+  sh:path skos:related ;
+  sh:description "Relates a concept to a concept with which there is an associative semantic relationship."@en ;
+  sh:disjoint skos:broaderTransitive ;
+  sh:group skos:StandardRelationshipsPropertyGroup ;
+  sh:name "related concept" ;
+  sh:order 2 ;
+.
+skos:Concept-relatedMatch
+  rdf:type sh:PropertyShape ;
+  sh:path skos:relatedMatch ;
+  sh:description "Used to state an associative mapping link between two conceptual resources in different concept schemes."@en ;
+  sh:group skos:MatchingRelationshipsPropertyGroup ;
+  sh:order 3 ;
+.
+skos:Concept-scopeNote
+  rdf:type sh:PropertyShape ;
+  sh:path skos:scopeNote ;
+  tosh:editWidget swa:RichTextEditor ;
+  sh:description "A note that helps to clarify the meaning and/or the use of a concept."@en ;
+  sh:group skos:NotesPropertyGroup ;
+  sh:order 4 ;
+.
+skos:Concept-type
+  rdf:type sh:PropertyShape ;
+  sh:path rdf:type ;
+  tosh:editWidget <http://evn.topbraidlive.org/ui#ConceptTypeEditor> ;
+  sh:group skos:LabelsAndDescriptionPropertyGroup ;
+  sh:order 4 ;
+.
+skos:ConceptScheme
+  rdf:type sh:NodeShape ;
+  sh:property skos:ConceptScheme-comment ;
+  sh:property skos:ConceptScheme-hasTopConcept ;
+  sh:property skos:ConceptScheme-label ;
+  sh:property skos:ConceptScheme-type ;
+.
+skos:ConceptScheme-comment
+  rdf:type sh:PropertyShape ;
+  sh:path rdfs:comment ;
+  sh:group skos:LabelsAndDescriptionPropertyGroup ;
+  sh:order "10"^^xsd:decimal ;
+.
+skos:ConceptScheme-hasTopConcept
+  rdf:type sh:PropertyShape ;
+  sh:path skos:hasTopConcept ;
+  sh:class skos:Concept ;
+  sh:description "Relates, by convention, a concept scheme to a concept which is topmost in the broader/narrower concept hierarchies for that scheme, providing an entry point to these hierarchies."@en ;
+  sh:group skos:DefinitionPropertyGroup ;
+.
+skos:ConceptScheme-label
+  rdf:type sh:PropertyShape ;
+  sh:path rdfs:label ;
+  sh:group skos:LabelsAndDescriptionPropertyGroup ;
+  sh:order "0"^^xsd:decimal ;
+.
+skos:ConceptScheme-type
+  rdf:type sh:PropertyShape ;
+  sh:path rdf:type ;
+  sh:group skos:DefinitionPropertyGroup ;
+.
+skos:DefinitionPropertyGroup
+  rdf:type sh:PropertyGroup ;
+  rdfs:label "Definition" ;
+.
+skos:LabelsAndDescriptionPropertyGroup
+  rdf:type sh:PropertyGroup ;
+  rdfs:label "Labels and Description" ;
+  sh:order 0 ;
+.
+skos:MatchingRelationshipsPropertyGroup
+  rdf:type sh:PropertyGroup ;
+  rdfs:label "Matching Relationships" ;
+  sh:order 4 ;
+.
+skos:NotesPropertyGroup
+  rdf:type sh:PropertyGroup ;
+  rdfs:label "Notes" ;
+  sh:order 3 ;
+.
+skos:OrderedCollection
+  rdf:type sh:NodeShape ;
+  sh:property skos:OrderedCollection-memberList ;
+.
+skos:OrderedCollection-memberList
+  rdf:type sh:PropertyShape ;
+  sh:path skos:memberList ;
+  sh:description "Relates an ordered collection to the RDF list containing its members."@en ;
+  sh:name "skos:OrderedCollection-memberList" ;
+  sh:sparql [
+      rdfs:comment "S36 For any resource, every item in the list given as the value of the skos:memberList property is also a value of the skos:member property." ;
+      sh:message "S36 For resource {?this}, every item in the list given as the value of the skos:memberList property must also a value of the skos:member property." ;
+      sh:prefixes <http://topbraid.org/skos.shapes> ;
+      sh:select """SELECT $this
+WHERE {
+    ?this skos:memberList ?list .
+    FILTER ((?list != rdf:nil) && (!skosshapes:checkMembers(?this, ?list))) .
+}""" ;
+    ] ;
+.
+skos:StandardRelationshipsPropertyGroup
+  rdf:type sh:PropertyGroup ;
+  rdfs:label "Standard Relationships" ;
+  sh:order 2 ;
+.

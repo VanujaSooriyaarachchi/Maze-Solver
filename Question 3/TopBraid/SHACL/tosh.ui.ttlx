@@ -1,0 +1,1370 @@
+# baseURI: http://topbraid.org/tosh.ui
+# imports: http://topbraid.org/swa
+# prefix: tosh.ui
+
+@prefix adminguide: <http://server.topbraidlive.org/doc/adminguide#> .
+@prefix afn: <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix arg: <http://spinrdf.org/arg#> .
+@prefix cfg: <http://server.topbraidlive.org/web/2009/config#> .
+@prefix charts: <http://uispin.org/charts#> .
+@prefix composite: <http://www.topbraid.org/2007/05/composite.owl#> .
+@prefix css: <http://uispin.org/css#> .
+@prefix daml: <http://www.daml.org/2001/03/daml+oil#> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix default: <http://uispin.org/default#> .
+@prefix email: <http://topbraid.org/email#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix graphql: <http://datashapes.org/graphql#> .
+@prefix html: <http://uispin.org/html#> .
+@prefix imported: <http://topbraid.org/imported#> .
+@prefix json: <http://topbraid.org/json#> .
+@prefix let: <http://uispin.org/let#> .
+@prefix letrs: <http://uispin.org/letrs#> .
+@prefix list: <http://jena.hpl.hp.com/ARQ/list#> .
+@prefix metadata: <http://topbraid.org/metadata#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix raci: <http://topbraid.org/raci#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix search: <http://topbraid.org/search#> .
+@prefix search.spin: <http://topbraid.org/search.spin#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix sioc: <http://rdfs.org/sioc/ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosapp: <http://evn.topbraidlive.org/uiplugins#> .
+@prefix skostemplate: <http://topbraid.org/spin/skostemplates#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+@prefix sm: <http://topbraid.org/sparqlmotion#> .
+@prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
+@prefix sml: <http://topbraid.org/sparqlmotionlib#> .
+@prefix solr: <http://topbraid.org/solr#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix sparqlmotionlib-swp: <http://topbraid.org/sparqlmotionlib-swp#> .
+@prefix sparqlmotionlib-tbc: <http://topbraid.org/sparqlmotionlib-tbc#> .
+@prefix spell: <http://topbraid.org/spellcheckresults#> .
+@prefix spif: <http://spinrdf.org/spif#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix spl-dynamic-ranges: <http://spinrdf.org/spl-dynamic-ranges#> .
+@prefix spr: <http://spinrdf.org/spr#> .
+@prefix spra: <http://spinrdf.org/spra#> .
+@prefix style: <http://uispin.org/style#> .
+@prefix svg: <http://uispin.org/svg#> .
+@prefix swa: <http://topbraid.org/swa#> .
+@prefix swaclasses: <http://topbraid.org/swaclasses#> .
+@prefix swaeditor: <http://topbraid.org/swaeditor#> .
+@prefix swaowl: <http://topbraid.org/swaowl#> .
+@prefix swashacl: <http://topbraid.org/swashacl#> .
+@prefix swauml: <http://topbraid.org/swauml#> .
+@prefix swon: <http://uispin.org/swon#> .
+@prefix sxml: <http://topbraid.org/sxml#> .
+@prefix tables: <http://topbraid.org/tables#> .
+@prefix task: <http://topbraid.org/task#> .
+@prefix tasks: <http://topbraid.org/tasks#> .
+@prefix tbl: <http://topbraidlive.org/functions#> .
+@prefix tops: <http://www.topbraid.org/tops#> .
+@prefix tosh: <http://topbraid.org/tosh#> .
+@prefix tosh.ui: <http://topbraid.org/tosh.ui#> .
+@prefix ui: <http://uispin.org/ui#> .
+@prefix uix: <http://topbraidlive.org/uix#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix wot: <http://xmlns.com/wot/0.1/> .
+@prefix xlink: <http://www.w3.org/1999/xlink#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+arg:canApply
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:canApplyGroups
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:canOK
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:defaultSubject
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:delete
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:editFormId
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:graphUpdate
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:linkable
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:result
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:resultId
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:shapesGraph
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:suggestion
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:triples
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+swa:ApplySuggestionGroupService
+  rdf:type ui:Service ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:group ;
+      rdfs:comment "The suggestion group." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:sessionGraph ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The session graph containing the suggestion." ;
+    ] ;
+  ui:private "true"^^xsd:boolean ;
+  ui:prototype """
+<ui:group letrs:ss=\"{#
+        SELECT ?suggestion
+        WHERE {
+            GRAPH ?sessionGraph {
+                ?suggestion dash:suggestionGroup ?group .
+            } .
+        } }\">
+    <ui:transaction ui:logMessage=\"Apply {= spr:rowCount(?ss) } suggestions similar to {= spl:objectInGraph(spr:cell(?ss, 0, 0), sh:message, ?sessionGraph) }\">
+        <ui:forEach ui:resultSet=\"{= ?ss }\">
+            <ui:update ui:updateQuery=\"{!
+                    DELETE {
+                        ?s ?p ?o .
+                    }
+                    WHERE {
+                        GRAPH ?sessionGraph {
+                            ?suggestion dash:deletedTriple ?triple .
+                            ?triple rdf:subject ?s .
+                            ?triple rdf:predicate ?p .
+                            ?triple rdf:object ?o .
+                        } .
+                    } }\"/>
+            <ui:update ui:updateQuery=\"{!
+                    INSERT {
+                        ?s ?p ?o .
+                    }
+                    WHERE {
+                        GRAPH ?sessionGraph {
+                            ?suggestion dash:addedTriple ?triple .
+                            ?triple rdf:subject ?s .
+                            ?triple rdf:predicate ?p .
+                            ?triple rdf:object ?o .
+                        } .
+                    } }\"/>
+        </ui:forEach>
+    </ui:transaction>
+    <ui:setContext ui:queryGraph=\"{= ?sessionGraph }\">
+        <ui:forEach ui:resultSet=\"{= ?ss }\">
+            <ui:update ui:updateQuery=\"{!
+                    DELETE {
+                        ?result dash:suggestion ?s .
+                    }
+                    INSERT {
+                        ?result dash:fixed true .
+                    }
+                    WHERE {
+                        ?result dash:suggestion ?suggestion .
+                        ?result dash:suggestion ?s .
+                    } }\"/>
+        </ui:forEach>
+    </ui:setContext>
+</ui:group>
+"""^^ui:Literal ;
+  rdfs:label "Apply suggestion group service" ;
+  rdfs:subClassOf ui:JSONServices ;
+  owl:versionInfo "DEPRECATED - use tosh.ui:ApplySuggestionService for future work" ;
+.
+swa:ApplySuggestionService
+  rdf:type ui:Service ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:sessionGraph ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The session graph containing the suggestion." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:suggestion ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The suggestion blank node." ;
+    ] ;
+  ui:private "true"^^xsd:boolean ;
+  ui:prototype """
+<ui:group>
+    <ui:transaction ui:logMessage=\"{= spl:objectInGraph(?suggestion, sh:message, ?sessionGraph) }\">
+        <ui:update ui:updateQuery=\"{!
+                DELETE {
+                    ?s ?p ?o .
+                }
+                WHERE {
+                    GRAPH ?sessionGraph {
+                        ?suggestion dash:deletedTriple ?triple .
+                        ?triple rdf:subject ?s .
+                        ?triple rdf:predicate ?p .
+                        ?triple rdf:object ?o .
+                    } .
+                } }\"/>
+        <ui:update ui:updateQuery=\"{!
+                INSERT {
+                    ?s ?p ?o .
+                }
+                WHERE {
+                    GRAPH ?sessionGraph {
+                        ?suggestion dash:addedTriple ?triple .
+                        ?triple rdf:subject ?s .
+                        ?triple rdf:predicate ?p .
+                        ?triple rdf:object ?o .
+                    } .
+                } }\"/>
+    </ui:transaction>
+    <ui:setContext ui:queryGraph=\"{= ?sessionGraph }\">
+        <ui:update ui:updateQuery=\"{!
+                DELETE {
+                    ?result dash:suggestion ?s .
+                }
+                INSERT {
+                    ?result dash:fixed true .
+                }
+                WHERE {
+                    ?result dash:suggestion ?suggestion .
+                    ?result dash:suggestion ?s .
+                } }\"/>
+    </ui:setContext>
+</ui:group>
+"""^^ui:Literal ;
+  rdfs:label "Apply suggestion service" ;
+  rdfs:subClassOf ui:JSONServices ;
+  owl:versionInfo "DEPRECATED - use tosh.ui:ApplySuggestionService for future work" ;
+.
+swa:GetOrCreateListMemberShape
+  rdf:type ui:Service ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:propertyShape ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The property shape" ;
+    ] ;
+  ui:private "true"^^xsd:boolean ;
+  ui:prototype """
+<ui:group let:memberShape=\"{= swa:listMemberShape(?propertyShape) }\">
+    <ui:if ui:condition=\"{= bound(?memberShape) }\">
+        <ui:group>{= ui:encodeNode(?memberShape, true, true) }</ui:group>
+    </ui:if>
+    <ui:else>
+        <ui:group let:memberShape=\"{= BNODE() }\">
+            <ui:setContext ui:silentTransactions=\"{= true }\">
+                <ui:update ui:updateQuery=\"{!
+                        INSERT {
+                            ?propertyShape sh:property ?memberShape .
+                            ?memberShape sh:path ?list .
+                            ?list rdf:first ?zeroOrMore .
+                            ?zeroOrMore sh:zeroOrMorePath rdf:rest .
+                            ?list rdf:rest ?first .
+                            ?first rdf:first rdf:first .
+                            ?first rdf:rest rdf:nil .
+                        }
+                        WHERE {
+                            BIND (BNODE() AS ?list) .
+                            BIND (BNODE() AS ?zeroOrMore) .
+                            BIND (BNODE() AS ?first) .
+                        } }\"/>
+            </ui:setContext>
+            <ui:group>{= ui:encodeNode(?memberShape, true, true) }</ui:group>
+        </ui:group>
+    </ui:else>
+</ui:group>
+"""^^ui:Literal ;
+  ui:responseType ui:TEXT ;
+  rdfs:label "Get or create list member shape" ;
+  rdfs:subClassOf ui:Services ;
+.
+swa:ValidationResultView
+  rdf:type ui:NodeClass ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:canApply ;
+      spl:valueType xsd:boolean ;
+      rdfs:comment "True to include the Apply button in suggestions." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:canApplyGroups ;
+      spl:valueType xsd:boolean ;
+      rdfs:comment "True to also display a button to apply all \"similar\" violations." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:defaultSubject ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The default subject - if set then the row \"Subject: ...\" will be suppressed if identical to the defaultSubject." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:dataGraph ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The data graph." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:result ;
+      spl:valueType sh:AbstractResult ;
+      rdfs:comment "The result instance to display." ;
+    ] ;
+  ui:prototype """
+<ui:group let:focusNode=\"{= spl:object(?result, sh:focusNode) }\" let:inverse=\"{= EXISTS {
+    ?result sh:resultPath ?path .
+    ?path sh:inversePath ?some .
+} }\" let:message=\"{= spl:object(?result, sh:resultMessage) }\" let:path=\"{= spl:object(?result, sh:resultPath) }\" let:resultId=\"{= ui:uniqueId() }\" let:severity=\"{= COALESCE(spl:object(?result, sh:resultSeverity), sh:Violation) }\" let:value=\"{= spl:object(?result, sh:value) }\">
+    <div class=\"swa-validation-result swa-validation-result-{= IF((?severity = sh:Warning), &quot;warning&quot;, &quot;violation&quot;) }\" id=\"{= ?resultId }\">
+        <div>
+            <div class=\"swa-validation-result-icon swa-validation-result-icon-{= spif:lowerCase(afn:localname(?severity)) } swa-float-left\"/>
+            <div class=\"swa-validation-result-message\">{= COALESCE(?message, \"(No message found)\") }</div>
+        </div>
+        <ui:if ui:condition=\"{= bound(?focusNode) &amp;&amp; (((!bound(?defaultSubject)) || ?inverse) || (?defaultSubject != ?focusNode)) }\">
+            <tosh.ui:ValidationResultViewValue arg:dataGraph=\"{= ?dataGraph }\" arg:label=\"Resource\" arg:linkable=\"{= true }\" arg:value=\"{= ?focusNode }\"/>
+        </ui:if>
+        <ui:if ui:condition=\"{= bound(?path) }\">
+            <tosh.ui:ValidationResultViewValue arg:dataGraph=\"{= ?dataGraph }\" arg:label=\"Property{= IF(?inverse, &quot; (inv)&quot;, ?none) }\" arg:value=\"{= IF(?inverse, spl:object(?path, sh:inversePath), ?path) }\"/>
+        </ui:if>
+        <ui:if ui:condition=\"{= bound(?value) }\">
+            <tosh.ui:ValidationResultViewValue arg:dataGraph=\"{= ?dataGraph }\" arg:label=\"Value\" arg:value=\"{= ?value }\"/>
+        </ui:if>
+        <ui:if ui:condition=\"{= EXISTS {
+            ?result dash:suggestion ?any .
+            ?any a dash:GraphUpdate .
+        } }\">
+            <table class=\"swa-validation-result-table\">
+                <tr letrs:suggestions=\"{#
+                        SELECT ?suggestion
+                        WHERE {
+                            ?result dash:suggestion ?suggestion .
+                            ?suggestion a dash:GraphUpdate .
+                            BIND (spl:object(?suggestion, sh:order) AS ?order) .
+                        }
+                        ORDER BY (?order) }\">
+                    <td class=\"swa-validation-result-table-label\">Suggestion{= IF((spr:rowCount(?suggestions) = 1), ?none, \"s\") }:</td>
+                    <td class=\"swa-validation-result-table-body\">
+                        <ui:forEach ui:resultSet=\"{= ?suggestions }\">
+                            <tosh.ui:GraphUpdateView arg:canApply=\"{= ?canApply }\" arg:canApplyGroups=\"{= ?canApplyGroups }\" arg:dataGraph=\"{= ?dataGraph }\" arg:graphUpdate=\"{= ?suggestion }\" arg:result=\"{= ?result }\" arg:resultId=\"{= ?resultId }\"/>
+                        </ui:forEach>
+                    </td>
+                </tr>
+            </table>
+        </ui:if>
+        <ui:elseif ui:condition=\"{= EXISTS {
+            ?result dash:fixed true .
+        } }\">
+            <div>(Suggestion applied)</div>
+        </ui:elseif>
+    </div>
+</ui:group>
+"""^^ui:Literal ;
+  rdfs:label "Validation result view" ;
+  rdfs:subClassOf swa:Elements ;
+.
+swa:ValidationResultsDialog
+  rdf:type ui:NodeClass ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:canOK ;
+      spl:valueType xsd:boolean ;
+      rdfs:comment "True to allow an OK button. Otherwise, the only button will be \"Close\", returning to where the user was." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:defaultSubject ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The default subject - if set then the row \"Subject: ...\" will be suppressed if identical to the defaultSubject." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:editFormId ;
+      spl:valueType xsd:string ;
+      rdfs:comment "The id of the edit form (for re-submitting the changes)." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:dataGraph ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The data graph." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:loadId ;
+      spl:valueType xsd:string ;
+      rdfs:comment "The loadId" ;
+    ] ;
+  ui:prototype """
+<div id=\"div-{= ?loadId }\" title=\"Validation Results\">
+    <script>swa.validationSessionGraph = \"{= ui:currentQueryGraph() }\";swa.validationSuggestions=[];</script>
+    <ui:call arg:dataGraph=\"{= ?dataGraph }\" ui:template=\"{= tosh.ui:ValidationResults }\">
+        <ui:forEach ui:resultSet=\"{= ?rs }\">
+            <swa:ValidationResultView arg:canApply=\"{= ?canOK }\" arg:dataGraph=\"{= ?dataGraph }\" arg:defaultSubject=\"{= ?defaultSubject }\" arg:result=\"{= ?result }\"/>
+        </ui:forEach>
+        <ui:if ui:condition=\"{= NOT EXISTS {
+            ?anyResult dash:suggestion ?anySuggestion .
+        } }\">
+            <!-- Immediately delete session graph if no suggestions were found (less memory build-up) -->
+            <ui:group let:dummy=\"{= ui:deleteSessionGraph(ui:currentQueryGraph()) }\"/>
+        </ui:if>
+    </ui:call>
+</div>
+"""^^ui:Literal ;
+  ui:responseType ui:HTML ;
+  rdfs:label "Validation results dialog" ;
+  rdfs:subClassOf swa:DialogElements ;
+.
+tosh:ResultsGenerator
+  rdf:type rdfs:Class ;
+  rdfs:comment "The class of results generators (for \"Problems and Suggestions\"), bringing together sh:SPARQLTarget and ui:NodeClass. From sh:SPARQLTarget this inherits the ability to specify a SELECT (or an optional ASK) query that is used to determine the target nodes. From ui:NodeClass this inherits the ui:prototype property, which defines the body of what should happen if the generator is run (for a single focus node)." ;
+  rdfs:label "Results generator" ;
+  rdfs:subClassOf ui:NodeClass ;
+  rdfs:subClassOf sh:SPARQLTarget ;
+.
+tosh:ResultsGenerators
+  rdf:type tosh:ResultsGenerator ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:focusNode ;
+      rdfs:comment "An optional focus node to operate on." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:report ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The report resource in the results graph. Newly created results must be added as triples ?report sh:result ?result." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:resultsGraph ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The URI of the graph where the results shall be added to." ;
+    ] ;
+  ui:abstract "true"^^xsd:boolean ;
+  rdfs:comment "Abstract superclass of elements that can insert (SHACL) results into a given results graph, for \"Problems and Suggestions\". They must have a ui:prototype that can be executed with ?focusNode bound to the current focus node. They also serve as SHACL SPARQL-based targets where the focus nodes are selected using the results of sh:select and sh:ask." ;
+  rdfs:label "Results generators" ;
+  rdfs:subClassOf ui:Operations ;
+.
+<http://topbraid.org/tosh.ui>
+  rdf:type owl:Ontology ;
+  owl:imports <http://topbraid.org/swa> ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.
+tosh.ui:ApplySuggestionsService
+  rdf:type ui:Service ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:json ;
+      spl:valueType xsd:string ;
+      rdfs:comment "The JSON string that can be parsed into an array of suggestion objects with the triples to add/delete, in the form previously produced by the server. The individual nodes will be parsed using the namespace prefixes of the current query graph." ;
+    ] ;
+  ui:private "true"^^xsd:boolean ;
+  ui:prototype """
+<ui:json ui:str=\"{= ?json }\">
+    <ui:group letrs:suggestions=\"{#
+            SELECT ?suggestion
+            WHERE {
+                ?json ui:jsonArrayMembers ?suggestion .
+            } }\">
+        <ui:transaction ui:logMessage=\"{= IF((spr:rowCount(?suggestions) &gt; 1), CONCAT(&quot;Apply &quot;, str(spr:rowCount(?suggestions)), &quot; suggestions&quot;), COALESCE(ui:jsonString(ui:jsonValue(spr:cell(?suggestions, 0, 0), &quot;label&quot;)), &quot;Apply suggestion&quot;)) }\">
+            <ui:forEach ui:resultSet=\"{= ?suggestions }\">
+                <ui:update ui:updateQuery=\"{!
+                        DELETE {
+                            ?subject ?predicate ?object .
+                        }
+                        WHERE {
+                            BIND (ui:jsonValue(?suggestion, &quot;triples&quot;) AS ?array) .
+                            ?array ui:jsonArrayMembers ?triple .
+                            FILTER (&quot;delete&quot; = ui:jsonString(ui:jsonValue(?triple, &quot;action&quot;))) .
+                            BIND (tosh.ui:json2Node(?triple, &quot;subject&quot;) AS ?subject) .
+                            BIND (tosh.ui:json2Node(?triple, &quot;predicate&quot;) AS ?predicate) .
+                            BIND (tosh.ui:json2Node(?triple, &quot;object&quot;) AS ?object) .
+                        } }\"/>
+                <ui:update ui:updateQuery=\"{!
+                        INSERT {
+                            ?subject ?predicate ?object .
+                        }
+                        WHERE {
+                            BIND (ui:jsonValue(?suggestion, &quot;triples&quot;) AS ?array) .
+                            ?array ui:jsonArrayMembers ?triple .
+                            FILTER (&quot;add&quot; = ui:jsonString(ui:jsonValue(?triple, &quot;action&quot;))) .
+                            BIND (tosh.ui:json2Node(?triple, &quot;subject&quot;) AS ?subject) .
+                            BIND (tosh.ui:json2Node(?triple, &quot;predicate&quot;) AS ?predicate) .
+                            BIND (tosh.ui:json2Node(?triple, &quot;object&quot;) AS ?object) .
+                        } }\"/>
+            </ui:forEach>
+        </ui:transaction>
+    </ui:group>
+</ui:json>
+"""^^ui:Literal ;
+  rdfs:comment """Takes an array of JSON suggestion objects and \"applies\" them, by adding or deleting the specified triples.
+
+Example:
+
+[
+	{
+		label: \"Replace label\",
+		triples: [
+			{
+				action: \"add\",
+				subject: { id: \"ex:Instance\" },
+				predicate: { id: \"rdfs:label\" },
+				object: { id: ... }
+			},
+			{
+				action: \"delete\",
+				...
+			}
+		]
+	}
+]""" ;
+  rdfs:label "Apply suggestions service" ;
+  rdfs:subClassOf ui:JSONServices ;
+.
+tosh.ui:DatatypeEditor
+  rdf:type swa:ObjectEditorClass ;
+  ui:prototype """
+<span let:name=\"new-{= ?uid }\">
+    <select class=\"form-control\" id=\"{= ?uid }-select\" name=\"{= ?name }\">
+        <option/>
+        <ui:forEach ui:indexVar=\"index\" ui:resultSet=\"{#
+                SELECT DISTINCT ?instance ?label
+                WHERE {
+                    {
+                        VALUES ?instance {
+                            xsd:anyURI
+                            xsd:boolean
+                            xsd:date
+                            xsd:dateTime
+                            xsd:decimal
+                            xsd:integer
+                            xsd:string
+                            rdf:HTML
+                        } .
+                    }
+                    UNION
+                    {
+                        BIND (?object AS ?instance) .
+                        FILTER bound(?object) .
+                    } .
+                    BIND (ui:label(?instance) AS ?label) .
+                } }\">
+            <option selected=\"{= IF((?object = ?instance), &quot;selected&quot;, ?none) }\" value=\"{= ui:encodeNode(?instance, true, true) }\">{= ?label }</option>
+        </ui:forEach>
+    </select>
+    <script>$(\"#{= ?uid }-select\").change(swa.reloadDatatypeEditors)</script>
+</span>
+"""^^ui:Literal ;
+  rdfs:comment "Produces a simple HTML drop down (select) of all frequently used rdfs:Datatypes. Also updates any tosh.ui:UseDeclaredDatatypeEditors on the same form whenever the selection changes." ;
+  rdfs:label "Datatype editor" ;
+  rdfs:subClassOf swa:ObjectEditor ;
+.
+tosh.ui:FlagsEditor
+  rdf:type swa:ObjectEditorClass ;
+  ui:prototype """
+<div class=\"checkbox\">
+    <input checked=\"{= IF((?object = &quot;i&quot;), &quot;checked&quot;, ?none) }\" name=\"new-{= ?uid }\" type=\"checkbox\" value=\"&quot;i&quot;\"/>
+    <span class=\"swa-checkbox-span\">&nbsp;Ignore case</span>
+</div>
+"""^^ui:Literal ;
+  rdfs:label "Flags editor" ;
+  rdfs:subClassOf swa:ObjectEditor ;
+.
+tosh.ui:GetJSONOperations
+  rdf:type ui:NodeClass ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:labelsGraph ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The graph that shall be used to fetch the labels. Defaults to the current query graph." ;
+    ] ;
+  ui:abstract "true"^^xsd:boolean ;
+  rdfs:label "Get JSON operations" ;
+  rdfs:subClassOf ui:Operations ;
+.
+tosh.ui:GraphUpdateView
+  rdf:type ui:NodeClass ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:canApply ;
+      spl:valueType xsd:boolean ;
+      rdfs:comment "True to include the Apply button." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:canApplyGroups ;
+      spl:valueType xsd:boolean ;
+      rdfs:comment "True to also display a button to apply all \"similar\" violations." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:dataGraph ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The data graph." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:graphUpdate ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The update to display." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:result ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The validation result." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:resultId ;
+      spl:valueType xsd:string ;
+      rdfs:comment "The ID of the form element displaying the result - this will be deleted from the form once Apply is clicked." ;
+    ] ;
+  ui:prototype """
+<div class=\"swa-validation-result-suggestion\" let:id=\"{= ui:uniqueId() }\" letrs:addedTriples=\"{#
+        SELECT ?triple
+        WHERE {
+            ?graphUpdate dash:addedTriple ?triple .
+        } }\" letrs:deletedTriples=\"{#
+        SELECT ?triple
+        WHERE {
+            ?graphUpdate dash:deletedTriple ?triple .
+        } }\">
+    <div>
+        <div class=\"swa-openable-object-icon ui-icon ui-icon-triangle-1-e tosh-ui-graph-update-view-openable\" id=\"{= ?id }\" onclick=\"swa.toggleOpenableObject('{= ?id }-body', '{= ?id }')\"/>
+        <a href=\"javascript:void(0)\" onclick=\"swa.toggleOpenableObject('{= ?id }-body', '{= ?id }')\">{= COALESCE(spl:object(?graphUpdate, sh:message), \"(No summary provided)\") }</a>
+        <span>&nbsp;&nbsp;&nbsp;</span>
+        <ui:if ui:condition=\"{= ?canApply }\">
+            <b>
+                <a href=\"javascript:void(0)\" onclick=\"swa.applySuggestion('{= ui:encodeNode(?graphUpdate, true, true) }', '{= ?resultId }')\">Apply</a>
+                <ui:if ui:condition=\"{= ?canApplyGroups }\">
+                    <ui:group let:others=\"{#
+                            SELECT (COUNT(?other) AS ?others)
+                            WHERE {
+                                ?graphUpdate dash:suggestionGroup ?group .
+                                ?other dash:suggestionGroup ?group .
+                                FILTER (?other != ?graphUpdate) .
+                            } }\">
+                        <ui:if ui:condition=\"{= ?others &gt; 0 }\">
+                            <swa:Spaces/>
+                            <a href=\"javascript:void(0)\" onclick=\"swa.applySuggestionGroup('{= ui:encodeNode(spl:object(?graphUpdate, dash:suggestionGroup), true, true) }', '{= ?resultId }')\">Apply this and {= ?others } similar suggestions</a>
+                        </ui:if>
+                    </ui:group>
+                </ui:if>
+            </b>
+        </ui:if>
+        <div class=\"swa-clear-both\"/>
+    </div>
+    <div class=\"ui-helper-hidden-accessible\" id=\"{= ?id }-body\">
+        <tosh.ui:GraphUpdateViewTriples arg:delete=\"{= true }\" arg:triples=\"{= ?deletedTriples }\" ui:args=\"*\"/>
+        <tosh.ui:GraphUpdateViewTriples arg:delete=\"{= false }\" arg:triples=\"{= ?addedTriples }\" ui:args=\"*\"/>
+    </div>
+</div>
+"""^^ui:Literal ;
+  rdfs:subClassOf swa:Elements ;
+.
+tosh.ui:GraphUpdateViewTriples
+  rdf:type ui:NodeClass ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:dataGraph ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The data graph." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:delete ;
+      spl:valueType xsd:boolean ;
+      rdfs:comment "true to delete, false to add" ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:result ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The validation result." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:triples ;
+      spl:valueType spr:Table ;
+      rdfs:comment "The result set binding ?triple." ;
+    ] ;
+  ui:prototype """
+<div class=\"swa-validation-result-suggestion-triples\">
+    <ui:forEach ui:resultSet=\"{= ?triples }\">
+        <div class=\"swa-validation-result-suggestion-triple\" let:object=\"{= spl:object(?triple, rdf:object) }\" let:predicate=\"{= spl:object(?triple, rdf:predicate) }\" let:severity=\"{= COALESCE(spl:object(?result, sh:severity), sh:Violation) }\" let:subject=\"{= spl:object(?triple, rdf:subject) }\">
+            <div class=\"swa-validation-result-icon swa-validation-result-icon-{= IF(?delete, &quot;delete&quot;, &quot;add&quot;) } swa-float-left\"/>
+            <ui:if ui:condition=\"{= (spl:object(?result, sh:subject) = ?subject) &amp;&amp; (spl:object(?result, sh:predicate) = ?predicate) }\">
+                <tosh.ui:Node arg:dataGraph=\"{= ?dataGraph }\" arg:node=\"{= ?object }\"/>
+            </ui:if>
+            <ui:else>
+                <span>Triple: </span>
+                <tosh.ui:Node arg:compact=\"{= true }\" arg:dataGraph=\"{= ?dataGraph }\" arg:node=\"{= ?subject }\"/>
+                <span>, </span>
+                <tosh.ui:Node arg:compact=\"{= true }\" arg:dataGraph=\"{= ?dataGraph }\" arg:node=\"{= ?predicate }\"/>
+                <span>, </span>
+                <tosh.ui:Node arg:compact=\"{= true }\" arg:dataGraph=\"{= ?dataGraph }\" arg:node=\"{= ?object }\"/>
+            </ui:else>
+            <div class=\"swa-clear-both\"/>
+        </div>
+    </ui:forEach>
+</div>
+"""^^ui:Literal ;
+  rdfs:subClassOf swa:Elements ;
+.
+tosh.ui:Node
+  rdf:type ui:NodeClass ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:compact ;
+      spl:valueType xsd:boolean ;
+      rdfs:comment "True to have the details as tool tip text only." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:linkable ;
+      spl:valueType xsd:boolean ;
+      rdfs:comment "True to (perhaps) turn the node display into a hyperlink. If true, then the system will look for a context variable toshLinkFunction and call it with the given ?node as its only argument." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:dataGraph ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The data graph." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:node ;
+      rdfs:comment "The node to display." ;
+    ] ;
+  ui:prototype """
+<ui:group let:info=\"{= IF(isLiteral(?node), CONCAT(&quot;Datatype: &quot;, afn:localname(datatype(?node))), IF(isIRI(?node), CONCAT(&quot;URI: &quot;, str(?node)), &quot;Blank node&quot;)) }\">
+    <ui:if ui:condition=\"{= ?linkable }\">
+        <ui:setContext let:function=\"{= ui:contextValue(&quot;toshLinkFunction&quot;) }\" ui:queryGraph=\"{= ?dataGraph }\">
+            <ui:group let:link=\"{= IF(bound(?function), spif:invoke(?function, ?node), ?none) }\">
+                <ui:if ui:condition=\"{= bound(?link) }\">
+                    <a href=\"{= ?link }\" title=\"{= ?info }\">{= ui:label(?node) }</a>
+                </ui:if>
+                <ui:else>
+                    <span title=\"{= ?info }\">{= ui:label(?node) }</span>
+                </ui:else>
+            </ui:group>
+        </ui:setContext>
+    </ui:if>
+    <ui:else>
+        <span title=\"{= ?info }\">{= swa:labelInGraph(?node, ?dataGraph) }</span>
+    </ui:else>
+    <ui:if ui:condition=\"{= swa:falseOrUnbound(?compact) }\">
+        <swa:Space/>
+        <swa:Space/>
+        <swa:Space/>
+        <span class=\"swa-validation-result-value-info\">({= ?info })</span>
+    </ui:if>
+</ui:group>
+"""^^ui:Literal ;
+  rdfs:subClassOf swa:Elements ;
+.
+tosh.ui:NodeKindEditor
+  rdf:type swa:ObjectEditorClass ;
+  ui:private "true"^^xsd:boolean ;
+  ui:prototype """
+<div id=\"{= ?uid }-div\" let:list=\"{= EXISTS {
+    ?subject sh:node dash:ListShape .
+} }\" let:memberShape=\"{= swa:listMemberShape(?subject) }\">
+    <div class=\"checkbox\">
+        <input checked=\"{= IF(dash:isNodeKindLiteral(?object), &quot;checked&quot;, ?none) }\" id=\"Literal-{= ?uid }\" type=\"checkbox\"/>
+        <span class=\"swa-checkbox-span\">Datatype Literals&nbsp;&nbsp;&nbsp;</span>
+    </div>
+    <div class=\"checkbox\">
+        <input checked=\"{= IF(dash:isNodeKindIRI(?object), &quot;checked&quot;, ?none) }\" id=\"IRI-{= ?uid }\" type=\"checkbox\"/>
+        <span class=\"swa-checkbox-span\">URIs&nbsp;&nbsp;&nbsp;</span>
+    </div>
+    <div class=\"checkbox\">
+        <input checked=\"{= IF(dash:isNodeKindBlankNode(?object), &quot;checked&quot;, ?none) }\" id=\"BlankNode-{= ?uid }\" type=\"checkbox\"/>
+        <span class=\"swa-checkbox-span\">Blank Nodes</span>
+    </div>
+    <input name=\"new-{= ?uid }\" type=\"hidden\" value=\"{= ui:encodeNode(?object) }\"/>
+    <br/>
+    <div class=\"checkbox\">
+        <input checked=\"{= IF(?list, &quot;checked&quot;, ?none) }\" id=\"List-{= ?uid }\" type=\"checkbox\"/>
+        <span class=\"swa-checkbox-span\" title=\"If checked, you can edit the constraints on list members by navigating to the property shape and clicking 'Edit constraints on List members' in the context menu under the form\">Values are ordered lists</span>
+    </div>
+    <swa:ObjectEditorHiddenFields arg:newObject=\"{= dash:ListShape }\" arg:object=\"{= IF(?list, dash:ListShape, ?none) }\" arg:predicate=\"{= sh:node }\" arg:subject=\"{= ?subject }\" arg:uid=\"{= ?uid }-list\"/>
+    <ui:if ui:condition=\"{= bound(?memberShape) }\">
+        <swa:ObjectEditorHiddenFields arg:newObject=\"{= ?memberShape }\" arg:object=\"{= ?memberShape }\" arg:predicate=\"{= sh:property }\" arg:subject=\"{= ?subject }\" arg:uid=\"{= ?uid }-listMemberShape\"/>
+    </ui:if>
+    <script>{= ui:functionCall(\"swa.initNodeKindEditor\", ?uid, ?list) }</script>
+</div>
+"""^^ui:Literal ;
+  rdfs:comment "An editing component showing three checkboxes for Literal, IRI or Blank Nodes. Produce a single sh:NodeKind." ;
+  rdfs:label "Node kind editor" ;
+  rdfs:subClassOf swa:ObjectEditor ;
+.
+tosh.ui:PathEditor
+  rdf:type swa:ObjectEditorClass ;
+  ui:prototype """
+<ui:group>
+    <ui:if ui:condition=\"{= isBlank(?object) }\">
+        <swa:BNodeViewerEditor ui:args=\"*\"/>
+    </ui:if>
+    <ui:else>
+        <swa:URIResourceEditor arg:suppressMenu=\"{= true }\" ui:args=\"*\"/>
+    </ui:else>
+</ui:group>
+"""^^ui:Literal ;
+  rdfs:comment "The editor for sh:path in property shapes. Currently only supports URIs nodes - if the value is a blank node then a read-only field is presented." ;
+  rdfs:label "Path editor" ;
+  rdfs:subClassOf swa:ObjectEditor ;
+.
+tosh.ui:PathViewer
+  rdf:type swa:ObjectViewerClass ;
+  ui:prototype """
+<ui:group>
+    <ui:if ui:condition=\"{= isBlank(?object) }\">
+        <swa:LiteralViewer ui:args=\"*\"/>
+    </ui:if>
+    <ui:else>
+        <swa:URIResourceViewer ui:args=\"*\"/>
+    </ui:else>
+</ui:group>
+"""^^ui:Literal ;
+  rdfs:label "Path viewer" ;
+  rdfs:subClassOf swa:ObjectViewer ;
+.
+tosh.ui:UseDeclaredDatatypeEditor
+  rdf:type swa:ObjectEditorClass ;
+  ui:private "true"^^xsd:boolean ;
+  ui:prototype """
+<ui:loadable class=\"swa-reload-on-datatype-change\" ui:loadId=\"loadable-{= ?uid }\">
+    <ui:group let:range=\"{= swa:localRange(spl:object(?subject, sh:path), ?subject) }\">
+        <ui:group let:datatype=\"{= IF(bound(?object), datatype(?object), COALESCE(?datatype, spl:object(?subject, sh:datatype), IF((?range = rdfs:Resource), xsd:string, ?range))) }\">
+            <ui:group let:editorClass=\"{= swa:bestObjectWidgetClass(?object, ?predicate, ?datatype, swa:resourceType(?subject), swa:ObjectEditorClass) }\">
+                <ui:if ui:condition=\"{= bound(?editorClass) }\">
+                    <ui:dynamicView arg:datatype=\"{= ?datatype }\" arg:object=\"{= ?object }\" arg:predicate=\"{= ?predicate }\" arg:subject=\"{= ?subject }\" arg:uid=\"{= ?uid }\" ui:class=\"{= ?editorClass }\"/>
+                </ui:if>
+                <ui:else>
+                    <span class=\"tosh-ui-use-declared-datatype-editor-grey\">(Requires datatype selection)</span>
+                </ui:else>
+            </ui:group>
+        </ui:group>
+    </ui:group>
+</ui:loadable>
+"""^^ui:Literal ;
+  rdfs:comment "A meta-editor for literals that uses the same datatype as declared via sh:datatype on the same property. The widget is set up to be reloadable whenever the sh:datatype on the form gets changed." ;
+  rdfs:label "Use declared datatype editor" ;
+  rdfs:subClassOf swa:ObjectEditor ;
+.
+tosh.ui:ValidationResultViewValue
+  rdf:type ui:NodeClass ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:linkable ;
+      spl:valueType xsd:boolean ;
+      rdfs:comment "See tosh.ui:Node." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:dataGraph ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The data graph." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:label ;
+      spl:valueType xsd:string ;
+      rdfs:comment "The label on the left." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:value ;
+      rdfs:comment "The value node to display." ;
+    ] ;
+  ui:prototype """
+<table class=\"swa-validation-result-table\">
+    <tr>
+        <td class=\"swa-validation-result-table-label\">{= ?label }:</td>
+        <td class=\"swa-validation-result-table-icon\">
+            <div class=\"swa-icon swa-inline-icon {= swa:nodeIconInGraph(?value, ?dataGraph) }\"/>
+        </td>
+        <td class=\"swa-validation-result-table-body\">
+            <tosh.ui:Node arg:compact=\"{= true }\" arg:dataGraph=\"{= ?dataGraph }\" arg:linkable=\"{= ?linkable }\" arg:node=\"{= ?value }\"/>
+        </td>
+    </tr>
+</table>
+"""^^ui:Literal ;
+  rdfs:label "Validation result view value" ;
+  rdfs:subClassOf swa:Elements ;
+.
+tosh.ui:ValidationResults
+  rdf:type spin:SelectTemplate ;
+  spin:body [
+      rdf:type sp:Select ;
+      sp:orderBy (
+          [
+            sp:varName "focusNodeLabel" ;
+          ]
+          [
+            sp:varName "predicateLabel" ;
+          ]
+        ) ;
+      sp:resultVariables (
+          [
+            sp:varName "result" ;
+          ]
+        ) ;
+      sp:where (
+          (
+            [
+              sp:object [
+                  sp:varName "type" ;
+                ] ;
+              sp:predicate rdf:type ;
+              sp:subject [
+                  sp:varName "result" ;
+                ] ;
+            ]
+            [
+              rdf:type sp:Filter ;
+              sp:expression [
+                  rdf:type sp:or ;
+                  sp:arg1 [
+                      rdf:type sp:eq ;
+                      sp:arg1 [
+                          sp:varName "type" ;
+                        ] ;
+                      sp:arg2 sh:ValidationResult ;
+                    ] ;
+                  sp:arg2 [
+                      rdf:type sp:eq ;
+                      sp:arg1 [
+                          sp:varName "type" ;
+                        ] ;
+                      sp:arg2 dash:FailureResult ;
+                    ] ;
+                ] ;
+            ]
+          )
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spl:object ;
+                sp:arg1 [
+                    sp:varName "result" ;
+                  ] ;
+                sp:arg2 sh:focusNode ;
+              ] ;
+            sp:variable [
+                sp:varName "focusNode" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    rdf:type sp:bound ;
+                    sp:arg1 [
+                        sp:varName "focusNode" ;
+                      ] ;
+                  ] ;
+                sp:arg2 [
+                    rdf:type swa:labelInGraph ;
+                    arg:resource [
+                        sp:varName "focusNode" ;
+                      ] ;
+                    arg:resourceGraph [
+                        sp:varName "dataGraph" ;
+                      ] ;
+                  ] ;
+                sp:arg3 "" ;
+              ] ;
+            sp:variable [
+                sp:varName "focusNodeLabel" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spl:object ;
+                sp:arg1 [
+                    sp:varName "result" ;
+                  ] ;
+                sp:arg2 sh:path ;
+              ] ;
+            sp:variable [
+                sp:varName "predicate" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    rdf:type sp:isIRI ;
+                    sp:arg1 [
+                        sp:varName "predicate" ;
+                      ] ;
+                  ] ;
+                sp:arg2 [
+                    rdf:type swa:labelInGraph ;
+                    arg:resource [
+                        sp:varName "predicate" ;
+                      ] ;
+                    arg:resourceGraph [
+                        sp:varName "dataGraph" ;
+                      ] ;
+                  ] ;
+                sp:arg3 "" ;
+              ] ;
+            sp:variable [
+                sp:varName "predicateLabel" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:dataGraph ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The data graph." ;
+    ] ;
+  spin:private "true"^^xsd:boolean ;
+  rdfs:label "Validation results" ;
+  rdfs:subClassOf spin:SelectTemplates ;
+.
+tosh.ui:getNodeJSON
+  rdf:type ui:NodeClass ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:node ;
+      rdfs:comment "The node to render." ;
+    ] ;
+  ui:private "true"^^xsd:boolean ;
+  ui:prototype """
+<swon:Object>
+    <ui:setContext ui:queryGraph=\"{= ?labelsGraph }\">
+        <swon:Value arg:name=\"id\" arg:value=\"{= ui:encodeNode(?node, true) }\"/>
+        <swon:Value arg:name=\"label\" arg:value=\"{= ui:label(?node) }\"/>
+        <swon:Value arg:name=\"icon\" arg:value=\"{= swa:nodeIcon(?node) }\"/>
+    </ui:setContext>
+</swon:Object>
+"""^^ui:Literal ;
+  rdfs:comment "Produces a pair of JSON values for the encoding of a given node and its label." ;
+  rdfs:label "get node JSON" ;
+  rdfs:subClassOf tosh.ui:GetJSONOperations ;
+.
+tosh.ui:getPathJSON
+  rdf:type ui:NodeClass ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:focusNode ;
+      rdfs:comment "The focus node providing the context." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:path ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The path" ;
+    ] ;
+  ui:private "true"^^xsd:boolean ;
+  ui:prototype """
+<swon:Object let:reportGraph=\"{= ui:currentQueryGraph() }\">
+    <ui:setContext ui:queryGraph=\"{= ?labelsGraph }\">
+        <swon:Value arg:name=\"id\" arg:value=\"{= ui:encodeNode(?path, true) }\"/>
+        <ui:if ui:condition=\"{= isIRI(?path) &amp;&amp; bound(?focusNode) }\">
+            <swon:Value arg:name=\"label\" arg:value=\"{= swa:propertyLabelAtNode(?path, ?focusNode) }\"/>
+        </ui:if>
+        <ui:elseif ui:condition=\"{= isBlank(?path) &amp;&amp; EXISTS {
+            GRAPH ?reportGraph {
+                ?path sh:inversePath ?pred .
+                FILTER isIRI(?pred) .
+            } .
+        } }\">
+            <swon:Value arg:name=\"label\" arg:value=\"{= ui:label(spl:objectInGraph(?path, sh:inversePath, ?reportGraph)) } (inverse)\"/>
+        </ui:elseif>
+        <ui:elseif ui:condition=\"{= isBlank(?path) }\">
+            <swon:Value arg:name=\"label\" arg:value=\"(Complex path expression)\"/>
+        </ui:elseif>
+        <ui:else>
+            <swon:Value arg:name=\"label\" arg:value=\"{= ui:label(?path) }\"/>
+        </ui:else>
+        <ui:group let:icon=\"{= swa:nodeIcon(?path) }\">
+            <swon:Value arg:name=\"icon\" arg:value=\"{= IF((?icon = &quot;swa-icon-untyped&quot;), &quot;swa-icon-property&quot;, ?icon) }\"/>
+        </ui:group>
+    </ui:setContext>
+</swon:Object>
+"""^^ui:Literal ;
+  rdfs:comment "Produces a pair of JSON values for the encoding of a given path and its label." ;
+  rdfs:label "get path JSON" ;
+  rdfs:subClassOf tosh.ui:GetJSONOperations ;
+.
+tosh.ui:getReportJSON
+  rdf:type ui:Operation ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:limit ;
+      spl:valueType xsd:integer ;
+      rdfs:comment "An optional maximum number of results to return. If present then the result object will have a field \"totalCount\" to indicate the full number that would have been returned." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:report ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The report resource." ;
+    ] ;
+  ui:prototype """
+<swon:Object>
+    <swon:Value arg:name=\"results\">
+        <ui:task ui:taskName=\"Generating JSON response\">
+            <swon:Array>
+                <ui:forEach ui:indexVar=\"index\" ui:limit=\"{= ?limit }\" ui:resultSet=\"{#
+                        SELECT ?result
+                        WHERE {
+                            ?report sh:result ?result .
+                        } }\">
+                    <tosh.ui:getResultJSON arg:labelsGraph=\"{= ?labelsGraph }\" arg:result=\"{= ?result }\"/>
+                    <ui:subTask ui:subTaskName=\"Result {= ?index }\"/>
+                </ui:forEach>
+            </swon:Array>
+        </ui:task>
+    </swon:Value>
+    <ui:if ui:condition=\"{= bound(?limit) }\">
+        <swon:Value arg:name=\"totalCount\" arg:value=\"{= spl:objectCount(?report, sh:result) }\"/>
+    </ui:if>
+</swon:Object>
+"""^^ui:Literal ;
+  rdfs:comment "Takes a SHACL report resource (with sh:result triples) and produces a custom JSON that is particularly suitable for JS clients." ;
+  rdfs:label "get report JSON" ;
+  rdfs:subClassOf tosh.ui:GetJSONOperations ;
+.
+tosh.ui:getResultJSON
+  rdf:type ui:NodeClass ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:result ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The instance of sh:AbstractResult." ;
+    ] ;
+  ui:private "true"^^xsd:boolean ;
+  ui:prototype """
+<swon:Object let:focusNode=\"{= spl:object(?result, sh:focusNode) }\">
+    <ui:if ui:condition=\"{= bound(?focusNode) }\">
+        <swon:Value arg:name=\"focusNode\">
+            <tosh.ui:getNodeJSON arg:labelsGraph=\"{= ?labelsGraph }\" arg:node=\"{= ?focusNode }\"/>
+        </swon:Value>
+    </ui:if>
+    <ui:group let:message=\"{= spl:object(?result, sh:resultMessage) }\">
+        <swon:Value arg:name=\"message\" arg:value=\"{= ?message }\"/>
+    </ui:group>
+    <ui:group let:path=\"{= spl:object(?result, sh:resultPath) }\">
+        <ui:if ui:condition=\"{= bound(?path) }\">
+            <swon:Value arg:name=\"path\">
+                <tosh.ui:getPathJSON arg:focusNode=\"{= ?focusNode }\" arg:labelsGraph=\"{= ?labelsGraph }\" arg:path=\"{= ?path }\"/>
+            </swon:Value>
+        </ui:if>
+    </ui:group>
+    <ui:group let:severity=\"{= spl:object(?result, sh:resultSeverity) }\">
+        <swon:Value arg:name=\"severity\" arg:value=\"{= afn:localname(?severity) }\"/>
+    </ui:group>
+    <ui:group let:type=\"{= spl:object(?result, rdf:type) }\">
+        <swon:Value arg:name=\"type\" arg:value=\"{= afn:localname(?type) }\"/>
+    </ui:group>
+    <ui:group let:value=\"{= spl:object(?result, sh:value) }\">
+        <ui:if ui:condition=\"{= bound(?value) }\">
+            <swon:Value arg:name=\"value\">
+                <tosh.ui:getNodeJSON arg:labelsGraph=\"{= ?labelsGraph }\" arg:node=\"{= ?value }\"/>
+            </swon:Value>
+        </ui:if>
+    </ui:group>
+    <ui:if ui:condition=\"{= EXISTS {
+        ?result dash:suggestion ?any .
+    } }\">
+        <swon:Value arg:name=\"suggestions\">
+            <swon:Array>
+                <ui:forEach ui:resultSet=\"{#
+                        SELECT ?suggestion
+                        WHERE {
+                            ?result dash:suggestion ?suggestion .
+                            BIND (spl:object(?suggestion, sh:order) AS ?order) .
+                            BIND (spl:object(?suggestion, dash:suggestionConfidence) AS ?confidence) .
+                        }
+                        ORDER BY (?order) DESC (?confidence) }\">
+                    <tosh.ui:getSuggestionJSON arg:labelsGraph=\"{= ?labelsGraph }\" arg:suggestion=\"{= ?suggestion }\"/>
+                </ui:forEach>
+            </swon:Array>
+        </swon:Value>
+    </ui:if>
+</swon:Object>
+"""^^ui:Literal ;
+  rdfs:comment "Takes a SHACL result resource (with properties such as sh:focusNode, sh:resultSeverity) and produces a custom JSON that is particularly suitable for JS clients." ;
+  rdfs:label "get result JSON" ;
+  rdfs:subClassOf tosh.ui:GetJSONOperations ;
+.
+tosh.ui:getSuggestionJSON
+  rdf:type ui:NodeClass ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:suggestion ;
+      spl:valueType dash:GraphUpdate ;
+      rdfs:comment "The suggestion to render. Currently only works for dash:GraphUpdates." ;
+    ] ;
+  ui:private "true"^^xsd:boolean ;
+  ui:prototype """
+<swon:Object>
+    <ui:group let:label=\"{= spl:object(?suggestion, sh:message) }\">
+        <swon:Value arg:name=\"label\" arg:value=\"{= ?label }\"/>
+    </ui:group>
+    <ui:group let:confidence=\"{= spl:object(?suggestion, dash:suggestionConfidence) }\">
+        <ui:if ui:condition=\"{= bound(?confidence) }\">
+            <swon:Value arg:name=\"confidence\" arg:value=\"{= ?confidence }\"/>
+        </ui:if>
+    </ui:group>
+    <swon:Values arg:name=\"triples\">
+        <ui:forEach ui:resultSet=\"{#
+                SELECT ?triple ?p ?subject ?predicate ?object
+                WHERE {
+                    ?suggestion ?p ?triple .
+                    ?triple rdf:subject ?subject .
+                    ?triple rdf:predicate ?predicate .
+                    ?triple rdf:object ?object .
+                    FILTER (?p IN (dash:addedTriple, dash:deletedTriple)) .
+                }
+                ORDER BY (?p) (?subject) (?predicate) (?object) }\">
+            <swon:Object>
+                <swon:Value arg:name=\"action\" arg:value=\"{= IF((?p = dash:addedTriple), &quot;add&quot;, &quot;delete&quot;) }\"/>
+                <swon:Value arg:name=\"subject\">
+                    <tosh.ui:getNodeJSON arg:labelsGraph=\"{= ?labelsGraph }\" arg:node=\"{= ?subject }\"/>
+                </swon:Value>
+                <swon:Value arg:name=\"predicate\">
+                    <tosh.ui:getPathJSON arg:focusNode=\"{= ?subject }\" arg:labelsGraph=\"{= ?labelsGraph }\" arg:path=\"{= ?predicate }\"/>
+                </swon:Value>
+                <swon:Value arg:name=\"object\">
+                    <tosh.ui:getNodeJSON arg:labelsGraph=\"{= ?labelsGraph }\" arg:node=\"{= ?object }\"/>
+                </swon:Value>
+            </swon:Object>
+        </ui:forEach>
+    </swon:Values>
+</swon:Object>
+"""^^ui:Literal ;
+  rdfs:comment "Takes a dash:GraphUpdate (suggestion) and produces a JSON object suitable for JS clients. The JSON contains sufficient information to be sent back to the server if the user decides to apply the suggestion." ;
+  rdfs:label "get suggestion JSON" ;
+  rdfs:subClassOf tosh.ui:GetJSONOperations ;
+.
+tosh.ui:json2Node
+  rdf:type spin:Function ;
+  spin:body [
+      rdf:type sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "result" ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type ui:jsonValue ;
+                arg:jsonObject [
+                    sp:varName "jsonObject" ;
+                  ] ;
+                arg:key [
+                    sp:varName "key" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "jsonNode" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type ui:jsonValue ;
+                arg:jsonObject [
+                    sp:varName "jsonNode" ;
+                  ] ;
+                arg:key "id" ;
+              ] ;
+            sp:variable [
+                sp:varName "idNode" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type ui:jsonString ;
+                arg:jsonValue [
+                    sp:varName "idNode" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "id" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type ui:decodeNode ;
+                sp:arg1 [
+                    sp:varName "id" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "result" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:jsonObject ;
+      rdfs:comment "The JSON object." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:key ;
+      spl:valueType xsd:string ;
+      rdfs:comment "The key to get from the object." ;
+    ] ;
+  spin:private "true"^^xsd:boolean ;
+  rdfs:label "json2Node" ;
+  rdfs:subClassOf spin:Functions ;
+.

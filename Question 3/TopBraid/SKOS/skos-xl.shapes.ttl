@@ -1,0 +1,61 @@
+# baseURI: http://topbraid.org/skos-xl.shapes
+# imports: http://datashapes.org/dash
+# imports: http://www.w3.org/2008/05/skos-xl
+
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://topbraid.org/skos-xl.shapes>
+  rdf:type owl:Ontology ;
+  rdfs:label "SKOS-XL SHACL shapes" ;
+  owl:imports <http://datashapes.org/dash> ;
+  owl:imports <http://www.w3.org/2008/05/skos-xl> ;
+.
+skos:Concept
+  rdf:type sh:NodeShape ;
+  sh:property skos:Concept-altLabelXL ;
+  sh:property skos:Concept-hiddenLabelXL ;
+.
+skos:Concept-altLabelXL
+  rdf:type sh:PropertyShape ;
+  sh:path skosxl:altLabel ;
+  sh:description "Associates an skosxl:Label with a skos:Concept. The property is analogous to skos:altLabel."@en ;
+  sh:group skosxl:LabelObjectsPropertyGroup ;
+  sh:order 1 ;
+.
+skos:Concept-hiddenLabelXL
+  rdf:type sh:PropertyShape ;
+  sh:path skosxl:hiddenLabel ;
+  sh:description "Associates an skosxl:Label with a skos:Concept. The property is analogous to skos:hiddenLabel."@en ;
+  sh:group skosxl:LabelObjectsPropertyGroup ;
+  sh:order 2 ;
+.
+skosxl:Label
+  rdf:type sh:NodeShape ;
+  sh:property skosxl:Label-literalForm ;
+.
+skosxl:Label-literalForm
+  rdf:type sh:PropertyShape ;
+  sh:path skosxl:literalForm ;
+  sh:minCount 1 ;
+  sh:name "literal form" ;
+  sh:or (
+      [
+        sh:datatype xsd:string ;
+      ]
+      [
+        sh:datatype rdf:langString ;
+      ]
+    ) ;
+.
+skosxl:LabelObjectsPropertyGroup
+  rdf:type sh:PropertyGroup ;
+  rdfs:label "Label Objects (SKOS-XL)" ;
+  sh:order "1"^^xsd:decimal ;
+.

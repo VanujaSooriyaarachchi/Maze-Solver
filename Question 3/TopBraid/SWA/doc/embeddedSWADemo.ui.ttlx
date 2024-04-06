@@ -1,0 +1,129 @@
+# baseURI: http://example.org/embeddedSWADemo
+# imports: http://topbraid.org/swa
+# prefix: embeddedSWADemo
+
+@prefix adminguide: <http://server.topbraidlive.org/doc/adminguide#> .
+@prefix afn: <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix arg: <http://spinrdf.org/arg#> .
+@prefix cfg: <http://server.topbraidlive.org/web/2009/config#> .
+@prefix charts: <http://uispin.org/charts#> .
+@prefix composite: <http://www.topbraid.org/2007/05/composite.owl#> .
+@prefix css: <http://uispin.org/css#> .
+@prefix daml: <http://www.daml.org/2001/03/daml+oil#> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix default: <http://uispin.org/default#> .
+@prefix email: <http://topbraid.org/email#> .
+@prefix embeddedSWADemo: <http://example.org/embeddedSWADemo#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix html: <http://uispin.org/html#> .
+@prefix imported: <http://topbraid.org/imported#> .
+@prefix json: <http://topbraid.org/json#> .
+@prefix let: <http://uispin.org/let#> .
+@prefix letrs: <http://uispin.org/letrs#> .
+@prefix list: <http://jena.hpl.hp.com/ARQ/list#> .
+@prefix metadata: <http://topbraid.org/metadata#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix raci: <http://topbraid.org/raci#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix search: <http://topbraid.org/search#> .
+@prefix search.spin: <http://topbraid.org/search.spin#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix sioc: <http://rdfs.org/sioc/ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosapp: <http://evn.topbraidlive.org/uiplugins#> .
+@prefix skostemplate: <http://topbraid.org/spin/skostemplates#> .
+@prefix skosxl: <http://www.w3.org/2008/05/skos-xl#> .
+@prefix sm: <http://topbraid.org/sparqlmotion#> .
+@prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
+@prefix sml: <http://topbraid.org/sparqlmotionlib#> .
+@prefix solr: <http://topbraid.org/solr#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix sparqlmotionlib-swp: <http://topbraid.org/sparqlmotionlib-swp#> .
+@prefix sparqlmotionlib-tbc: <http://topbraid.org/sparqlmotionlib-tbc#> .
+@prefix spell: <http://topbraid.org/spellcheckresults#> .
+@prefix spif: <http://spinrdf.org/spif#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix spl-dynamic-ranges: <http://spinrdf.org/spl-dynamic-ranges#> .
+@prefix spr: <http://spinrdf.org/spr#> .
+@prefix spra: <http://spinrdf.org/spra#> .
+@prefix style: <http://uispin.org/style#> .
+@prefix svg: <http://uispin.org/svg#> .
+@prefix swa: <http://topbraid.org/swa#> .
+@prefix swaclasses: <http://topbraid.org/swaclasses#> .
+@prefix swaeditor: <http://topbraid.org/swaeditor#> .
+@prefix swaowl: <http://topbraid.org/swaowl#> .
+@prefix swauml: <http://topbraid.org/swauml#> .
+@prefix swon: <http://uispin.org/swon#> .
+@prefix sxml: <http://topbraid.org/sxml#> .
+@prefix tables: <http://topbraid.org/tables#> .
+@prefix task: <http://topbraid.org/task#> .
+@prefix tasks: <http://topbraid.org/tasks#> .
+@prefix tbl: <http://topbraidlive.org/functions#> .
+@prefix tops: <http://www.topbraid.org/tops#> .
+@prefix tosh: <http://topbraid.org/tosh#> .
+@prefix ui: <http://uispin.org/ui#> .
+@prefix uix: <http://topbraidlive.org/uix#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix wot: <http://xmlns.com/wot/0.1/> .
+@prefix xlink: <http://www.w3.org/1999/xlink#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/embeddedSWADemo>
+  rdf:type owl:Ontology ;
+  owl:imports <http://topbraid.org/swa> ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.
+embeddedSWADemo:ResourceForm
+  rdf:type ui:ViewElement ;
+  ui:prototype """
+<swa:BorderLayout arg:class=\"embeddedSWADemo-resource-form-border-layout\">
+    <swa:Window arg:id=\"formWindow\" arg:layoutPanel=\"center\" arg:title=\"Resource Form\">
+        <swa:SwitchableFormGadget arg:resourceSelectedEvent=\"org.example.resourceSelected\" ui:args=\"*\"/>
+    </swa:Window>
+</swa:BorderLayout>
+"""^^ui:Literal ;
+  ui:responseType ui:HTML ;
+  rdfs:comment "An SWP component that can be embedded into an external web application to display a switchable resource form." ;
+  rdfs:label "Resource form" ;
+  rdfs:subClassOf ui:ViewElements ;
+.
+embeddedSWADemo:SearchForm
+  rdf:type ui:ViewElement ;
+  ui:prototype """
+<swa:BorderLayout arg:class=\"embeddedSWADemo-resource-form-border-layout\" arg:southSize=\"{= 150 }\" let:resourceType=\"{= owl:Thing }\">
+    <swa:Window arg:id=\"searchFormWindow\" arg:layoutPanel=\"center\" arg:title=\"Search Form\">
+        <swa:FormSearchGadget arg:classSelectedEvent=\"org.example.classSelected\" ui:args=\"*\"/>
+    </swa:Window>
+    <swa:Window arg:id=\"searchGridWindow\" arg:layoutPanel=\"south\" arg:title=\"Search Results\">
+        <swa:GridSearchResultsGadget arg:resourceSelectedEvent=\"org.example.resourceSelected\" ui:args=\"*\"/>
+    </swa:Window>
+</swa:BorderLayout>
+"""^^ui:Literal ;
+  ui:responseType ui:HTML ;
+  rdfs:comment "An SWP component that can be embedded into an external web application to display a search form and a result grid." ;
+  rdfs:label "Search form" ;
+  rdfs:subClassOf ui:ViewElements ;
+.
+embeddedSWADemo:Tree
+  rdf:type ui:ViewElement ;
+  ui:prototype """
+<swa:BorderLayout arg:class=\"embeddedSWADemo-resource-form-tree\">
+    <swa:Window arg:layoutPanel=\"center\" arg:title=\"Class Tree\">
+        <swa:ClassTreeGadget arg:classSelectedEvent=\"org.example.classSelected\" arg:resourceSelectedEvent=\"org.example.resourceSelected\" arg:rootClass=\"{= owl:Thing }\"/>
+    </swa:Window>
+</swa:BorderLayout>
+"""^^ui:Literal ;
+  ui:responseType ui:HTML ;
+  rdfs:comment """An SWP component that can be embedded into an external web application to display a class tree (here: for the schema.org namespace).
+
+Note that each of these publicly accessible components must declare a suitable ui:responseType.""" ;
+  rdfs:label "Tree" ;
+  rdfs:subClassOf ui:ViewElements ;
+.

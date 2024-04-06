@@ -1,0 +1,75 @@
+# baseURI: http://www.topbraidcomposer.org/owl/2006/08/spreadsheets.owl
+# prefix: ss
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ss: <http://www.topbraidcomposer.org/owl/2006/08/spreadsheets.owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.topbraidcomposer.org/owl/2006/08/spreadsheets.owl>
+  rdf:type owl:Ontology ;
+  rdfs:comment "A generic ontology to describe spreadsheets (in particular for formats like Excel)." ;
+  owl:versionInfo "1.0.0" ;
+.
+ss:Cell
+  rdf:type owl:Class ;
+.
+ss:Sheet
+  rdf:type owl:Class ;
+.
+ss:Workbook
+  rdf:type owl:Class ;
+.
+ss:cell
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain ss:Sheet ;
+  rdfs:range ss:Cell ;
+.
+ss:cellContents
+  rdf:type rdf:Property ;
+  rdfs:domain ss:Cell ;
+.
+ss:cellType
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain ss:Cell ;
+.
+ss:column
+  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:FunctionalProperty ;
+  rdfs:domain ss:Cell ;
+  rdfs:range xsd:int ;
+.
+ss:hidden
+  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:FunctionalProperty ;
+  rdfs:domain ss:Cell ;
+  rdfs:range xsd:boolean ;
+.
+ss:hyperlink
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain ss:Cell ;
+.
+ss:row
+  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:FunctionalProperty ;
+  rdfs:domain ss:Cell ;
+  rdfs:range xsd:int ;
+.
+ss:sheetIndex
+  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:FunctionalProperty ;
+  rdfs:domain ss:Sheet ;
+  rdfs:range xsd:int ;
+.
+ss:sheetName
+  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:FunctionalProperty ;
+  rdfs:domain ss:Sheet ;
+  rdfs:range xsd:string ;
+.
+ss:workbook
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain ss:Sheet ;
+  rdfs:range ss:Workbook ;
+.

@@ -1,0 +1,289 @@
+# baseURI: http://topbraid.org/examples/geo-ontology
+# imports: http://topbraid.org/skos.shapes
+# imports: http://www.w3.org/2003/01/geo/wgs84_pos
+# imports: http://www.w3.org/2008/05/skos-xl
+# prefix: geo-ontology
+
+@prefix edg: <http://edg.topbraid.solutions/model/> .
+@prefix g: <http://topquadrant.com/ns/examples/geography#> .
+@prefix geo-ontology: <http://topbraid.org/examples/geo-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://topbraid.org/examples/geo-ontology>
+  rdf:type owl:Ontology ;
+  rdfs:label "TopBraid Examples Geo Ontology" ;
+  owl:imports <http://topbraid.org/skos.shapes> ;
+  owl:imports <http://www.w3.org/2003/01/geo/wgs84_pos> ;
+  owl:imports <http://www.w3.org/2008/05/skos-xl> ;
+.
+g:City
+  rdf:type owl:Class ;
+  rdfs:label "City"@en ;
+  rdfs:label "Ciudad"@es ;
+  rdfs:label "Miasto"@pl ;
+  rdfs:label "Stadt"@de ;
+  rdfs:label "Ville"@fr ;
+  rdfs:label "Сити"@ru ;
+  rdfs:subClassOf g:GeoConcept ;
+.
+g:Continent
+  rdf:type owl:Class ;
+  rdfs:label "Continent"@en ;
+  rdfs:label "Continent"@fr ;
+  rdfs:label "Continente"@es ;
+  rdfs:label "Kontinent"@de ;
+  rdfs:label "Kontynent"@pl ;
+  rdfs:label "континент"@ru ;
+  rdfs:subClassOf g:GeoConcept ;
+.
+g:Country
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:label "Country"@en ;
+  rdfs:label "Kraj"@pl ;
+  rdfs:label "Land"@de ;
+  rdfs:label "Pays"@fr ;
+  rdfs:label "País"@es ;
+  rdfs:label "страна"@ru ;
+  rdfs:subClassOf edg:Country ;
+  rdfs:subClassOf g:GeoConcept ;
+  sh:property g:Country-callingCode ;
+  sh:property g:Country-capital ;
+  sh:property g:Country-isoCountryCode2 ;
+  sh:property g:Country-isoCountryCode3 ;
+  sh:property g:Country-language ;
+.
+g:Country-callingCode
+  rdf:type sh:PropertyShape ;
+  sh:path g:callingCode ;
+  sh:datatype xsd:integer ;
+  sh:maxCount 1 ;
+.
+g:Country-capital
+  rdf:type sh:PropertyShape ;
+  sh:path g:capital ;
+  sh:class g:City ;
+.
+g:Country-isoCountryCode2
+  rdf:type sh:PropertyShape ;
+  sh:path g:isoCountryCode2 ;
+  sh:datatype xsd:string ;
+  sh:maxCount 1 ;
+.
+g:Country-isoCountryCode3
+  rdf:type sh:PropertyShape ;
+  sh:path g:isoCountryCode3 ;
+  sh:datatype xsd:string ;
+  sh:maxCount 1 ;
+.
+g:Country-language
+  rdf:type sh:PropertyShape ;
+  sh:path g:language ;
+  sh:datatype xsd:string ;
+.
+g:DataSource
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:label "Data source" ;
+  rdfs:subClassOf owl:Thing ;
+  sh:property g:DataSource-sourceURL ;
+  sh:property g:DataSource-sparqlEndpoint ;
+.
+g:DataSource-sourceURL
+  rdf:type sh:PropertyShape ;
+  sh:path g:sourceURL ;
+  sh:datatype xsd:anyURI ;
+.
+g:DataSource-sparqlEndpoint
+  rdf:type sh:PropertyShape ;
+  sh:path g:sparqlEndpoint ;
+  sh:datatype xsd:string ;
+.
+g:GeoConcept
+  rdf:type owl:Class ;
+  rdf:type sh:NodeShape ;
+  rdfs:label "Geo concept"@en ;
+  rdfs:label "Geografia Koncepcja"@pl ;
+  rdfs:label "Geografía Concept"@es ;
+  rdfs:label "Geographie Konzept"@de ;
+  rdfs:label "Géographie Concept"@fr ;
+  rdfs:label "География Концепция"@ru ;
+  rdfs:subClassOf <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing> ;
+  rdfs:subClassOf skos:Concept ;
+  sh:property g:GeoConcept-areaKM ;
+  sh:property g:GeoConcept-verifiedDate ;
+.
+g:GeoConcept-areaKM
+  rdf:type sh:PropertyShape ;
+  sh:path g:areaKM ;
+  sh:datatype xsd:decimal ;
+  sh:maxCount 1 ;
+.
+g:GeoConcept-verifiedDate
+  rdf:type sh:PropertyShape ;
+  sh:path g:verifiedDate ;
+  sh:datatype xsd:date ;
+  sh:maxCount 1 ;
+.
+g:Island
+  rdf:type owl:Class ;
+  rdfs:label "Insel"@de ;
+  rdfs:label "Isla"@es ;
+  rdfs:label "Island"@en ;
+  rdfs:label "Wyspa"@pl ;
+  rdfs:label "Île"@fr ;
+  rdfs:label "остров"@ru ;
+  rdfs:subClassOf g:GeoConcept ;
+.
+g:Prefecture
+  rdf:type owl:Class ;
+  rdfs:subClassOf g:GeoConcept ;
+  skos:prefLabel "Prefecture"@en ;
+.
+g:Province
+  rdf:type owl:Class ;
+  rdfs:label "Province"@en ;
+  rdfs:label "Province"@fr ;
+  rdfs:label "Provincia"@es ;
+  rdfs:label "Provinz"@de ;
+  rdfs:label "Prowincja"@pl ;
+  rdfs:label "провинция"@ru ;
+  rdfs:subClassOf g:GeoConcept ;
+.
+g:State
+  rdf:type owl:Class ;
+  rdfs:label "Estado"@es ;
+  rdfs:label "Staat"@de ;
+  rdfs:label "Stan"@pl ;
+  rdfs:label "State"@en ;
+  rdfs:label "Êtat"@fr ;
+  rdfs:label "государство"@ru ;
+  rdfs:subClassOf g:GeoConcept ;
+.
+g:Territory
+  rdf:type owl:Class ;
+  rdfs:label "Gebiet"@de ;
+  rdfs:label "Territoire"@fr ;
+  rdfs:label "Territorio"@es ;
+  rdfs:label "Territory"@en ;
+  rdfs:label "Terytorium"@pl ;
+  rdfs:label "территория"@ru ;
+  rdfs:subClassOf g:GeoConcept ;
+.
+g:areaKM
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain g:GeoConcept ;
+  rdfs:label "area (KM)"@en ;
+  rdfs:label "bereich (KM)"@de ;
+  rdfs:label "obszar (KM)"@pl ;
+  rdfs:label "région (KM)"@fr ;
+  rdfs:label "zona (KM)"@es ;
+  rdfs:label "площадь"@ru ;
+  rdfs:range xsd:decimal ;
+.
+g:callingCode
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain g:Country ;
+  rdfs:label "calling code"@en ;
+  rdfs:label "código de llamada"@es ;
+  rdfs:label "l'appel de code"@fr ;
+  rdfs:label "telefoniczny kod"@pl ;
+  rdfs:label "telefonvorwahl"@de ;
+  rdfs:label "вызывающий код"@ru ;
+  rdfs:range xsd:integer ;
+.
+g:capital
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain g:Country ;
+  rdfs:label ":0?8B0;"@de ;
+  rdfs:label "capital"@en ;
+  rdfs:label "capital"@es ;
+  rdfs:label "capital"@fr ;
+  rdfs:label "hauptstadt"@pl ;
+  rdfs:label "kapitaB"@ru ;
+  rdfs:range g:City ;
+.
+g:endDate
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain <http://www.w3.org/2008/05/skos-xl#Label> ;
+  rdfs:label "end date" ;
+  rdfs:range xsd:date ;
+.
+g:isoCountryCode2
+  rdf:type owl:DatatypeProperty ;
+  g:originalSource g:ISO3166 ;
+  rdfs:comment "From 2-letter iso code from ISO 30166." ;
+  rdfs:domain g:Country ;
+  rdfs:label "ISO ALPHA-2 country code" ;
+  rdfs:range xsd:string ;
+.
+g:isoCountryCode3
+  rdf:type owl:DatatypeProperty ;
+  g:originalSource g:United_Nations_Statistics_Division ;
+  rdfs:comment "3-letter iso code from United Nations Statistics Division." ;
+  rdfs:domain g:Country ;
+  rdfs:label "ISO ALPHA-3 country code" ;
+  rdfs:range xsd:string ;
+.
+g:language
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain g:Country ;
+  rdfs:label "idioma"@es ;
+  rdfs:label "język"@pl ;
+  rdfs:label "language"@en ;
+  rdfs:label "langue"@fr ;
+  rdfs:label "sprache"@de ;
+  rdfs:label "язык"@ru ;
+  rdfs:range xsd:string ;
+.
+g:originalSource
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain skos:Concept ;
+  rdfs:domain <http://www.w3.org/2008/05/skos-xl#Label> ;
+  rdfs:label "original source" ;
+  rdfs:range g:DataSource ;
+.
+g:sourceURL
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain g:DataSource ;
+  rdfs:label "source URL" ;
+  rdfs:range xsd:anyURI ;
+.
+g:sparqlEndpoint
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain g:DataSource ;
+  rdfs:label "sparql endpoint" ;
+  rdfs:range xsd:string ;
+.
+g:startDate
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain <http://www.w3.org/2008/05/skos-xl#Label> ;
+  rdfs:label "start date" ;
+  rdfs:range xsd:date ;
+.
+g:verifiedDate
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain g:GeoConcept ;
+  rdfs:domain <http://www.w3.org/2008/05/skos-xl#Label> ;
+  rdfs:label "date vérifié"@fr ;
+  rdfs:label "geprüft Datum"@de ;
+  rdfs:label "verificado fecha"@es ;
+  rdfs:label "verified date"@en ;
+  rdfs:label "zweryfikowane Data"@pl ;
+  rdfs:label "проверено Дата"@ru ;
+  rdfs:range xsd:date ;
+.
+skos:explanation
+  rdf:type owl:DatatypeProperty ;
+  rdfs:label "erklärung"@de ;
+  rdfs:label "explanation"@en ;
+  rdfs:label "explicación"@es ;
+  rdfs:label "explication"@fr ;
+  rdfs:label "wyjaśnienie"@pl ;
+  rdfs:label "объяснение"@ru ;
+.

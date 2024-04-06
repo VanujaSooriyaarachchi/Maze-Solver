@@ -1,0 +1,1405 @@
+# baseURI: http://topbraid.org/swaeditor
+# imports: http://topbraid.org/swa
+# prefix: swaeditor
+
+@prefix afn: <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix arg: <http://spinrdf.org/arg#> .
+@prefix composite: <http://www.topbraid.org/2007/05/composite.owl#> .
+@prefix css: <http://uispin.org/css#> .
+@prefix daml: <http://www.daml.org/2001/03/daml+oil#> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix default: <http://uispin.org/default#> .
+@prefix email: <http://topbraid.org/email#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix html: <http://uispin.org/html#> .
+@prefix let: <http://uispin.org/let#> .
+@prefix letrs: <http://uispin.org/letrs#> .
+@prefix list: <http://jena.hpl.hp.com/ARQ/list#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix search: <http://topbraid.org/search#> .
+@prefix search.spin: <http://topbraid.org/search.spin#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sm: <http://topbraid.org/sparqlmotion#> .
+@prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
+@prefix sml: <http://topbraid.org/sparqlmotionlib#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix sparqlmotionlib-swp: <http://topbraid.org/sparqlmotionlib-swp#> .
+@prefix spif: <http://spinrdf.org/spif#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix spl-dynamic-ranges: <http://spinrdf.org/spl-dynamic-ranges#> .
+@prefix spr: <http://spinrdf.org/spr#> .
+@prefix spra: <http://spinrdf.org/spra#> .
+@prefix style: <http://uispin.org/style#> .
+@prefix svg: <http://uispin.org/svg#> .
+@prefix swa: <http://topbraid.org/swa#> .
+@prefix swaeditor: <http://topbraid.org/swaeditor#> .
+@prefix swauml: <http://topbraid.org/swauml#> .
+@prefix swon: <http://uispin.org/swon#> .
+@prefix sxml: <http://topbraid.org/sxml#> .
+@prefix teamwork: <http://topbraid.org/teamwork#> .
+@prefix tosh: <http://topbraid.org/tosh#> .
+@prefix ui: <http://uispin.org/ui#> .
+@prefix uix: <http://topbraidlive.org/uix#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xlink: <http://www.w3.org/1999/xlink#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+arg:add
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:element
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:elementType
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:rootElement
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+arg:suppressSKOS
+  rdf:type rdf:Property ;
+  rdfs:subPropertyOf sp:arg ;
+.
+swa:AbstractObject
+  ui:instanceView """
+<ui:group default:subject=\"{= ?this }\" default:tabular=\"{= true }\" ui:id=\"form\">
+    <swa:ObjectsEnum arg:label=\"Property and Cardinality\">
+        <swa:Object arg:editWidget=\"{= swaeditor:ObjectPropertyEditor }\" arg:label=\"property\" arg:predicate=\"{= arg:predicate }\"/>
+        <swa:Object arg:editWidget=\"{= swaeditor:ObjectTypeEditor }\" arg:label=\"cardinality\" arg:predicate=\"{= rdf:type }\" arg:viewWidget=\"{= swaeditor:ObjectTypeViewer }\"/>
+    </swa:ObjectsEnum>
+    <swa:ObjectsEnum arg:label=\"Display (Optional)\">
+        <swa:Object arg:editWidget=\"{= swaeditor:ModeCheckBoxEditor }\" arg:predicate=\"{= arg:hideInModes }\"/>
+        <swa:Object arg:editWidget=\"{= swa:PlainTextFieldEditor }\" arg:predicate=\"{= arg:label }\"/>
+    </swa:ObjectsEnum>
+</ui:group>
+"""^^ui:Literal ;
+.
+swa:AbstractSubject
+  ui:instanceView """
+<ui:group default:subject=\"{= ?this }\" default:tabular=\"{= true }\" ui:id=\"form\">
+    <swa:ObjectsEnum arg:label=\"Property\">
+        <swa:Object arg:label=\"property\" arg:predicate=\"{= arg:predicate }\"/>
+    </swa:ObjectsEnum>
+    <swa:ObjectsEnum arg:label=\"Display (Optional)\">
+        <swa:Object arg:editWidget=\"{= swa:PlainTextFieldEditor }\" arg:predicate=\"{= arg:label }\"/>
+    </swa:ObjectsEnum>
+</ui:group>
+"""^^ui:Literal ;
+.
+swa:ObjectsEnum
+  ui:instanceView """
+<ui:group default:subject=\"{= ?this }\" default:tabular=\"{= true }\" ui:id=\"form\">
+    <swa:ObjectsEnum arg:label=\"Settings\">
+        <swa:Object arg:editWidget=\"{= swa:PlainTextFieldEditor }\" arg:predicate=\"{= arg:label }\"/>
+        <swa:Object arg:label=\"collapsible\" arg:predicate=\"{= arg:openable }\"/>
+    </swa:ObjectsEnum>
+</ui:group>
+"""^^ui:Literal ;
+.
+swa:ObjectsPlaceholder
+  ui:instanceView """
+<ui:group default:subject=\"{= ?this }\" default:tabular=\"{= true }\" ui:id=\"form\">
+    <swa:ObjectsEnum arg:label=\"Settings\">
+        <swa:Object arg:predicate=\"{= arg:label }\"/>
+        <swa:Object arg:predicate=\"{= arg:openable }\"/>
+        <swa:Object arg:label=\"&quot;Add&quot; box in edit mode\" arg:predicate=\"{= arg:addBoxInEditMode }\"/>
+    </swa:ObjectsEnum>
+</ui:group>
+"""^^ui:Literal ;
+.
+<http://topbraid.org/swaeditor>
+  rdf:type owl:Ontology ;
+  owl:imports <http://topbraid.org/swa> ;
+  owl:versionInfo "Created with TopBraid Composer" ;
+.
+swaeditor:Application
+  rdf:type ui:NodeClass ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:rootElement ;
+      spl:valueType ui:Element ;
+      rdfs:comment "The root element of the UI hierarchy." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:title ;
+      spl:valueType xsd:string ;
+      rdfs:comment "The title of the application." ;
+    ] ;
+  ui:headIncludes """
+<ui:group>
+    <title>TopBraid Form Editor</title>
+</ui:group>
+"""^^ui:Literal ;
+  ui:prototype """
+<swa:FullScreenBorderLayout arg:northFixed=\"{= true }\" arg:southFixed=\"{= true }\" arg:westSize=\"{= 450 }\" let:resourceSelectedEvent=\"swaeditor.elementSelected\">
+    <swaeditor:ApplicationHeader ui:args=\"*\"/>
+    <swa:Window arg:layoutPanel=\"west\" arg:title=\"Element Hierarchy\">
+        <swaeditor:ElementTreeGadget arg:resourceSelectedEvent=\"{= ?resourceSelectedEvent }\" arg:treeId=\"elementTree\" ui:args=\"*\"/>
+    </swa:Window>
+    <swa:Window arg:id=\"swaeditorFormWindow\" arg:layoutPanel=\"center\" arg:title=\"Selected Element\">
+        <swaeditor:ElementFormGadget arg:resourceSelectedEvent=\"{= ?instanceSelectedEvent }\" ui:args=\"*\"/>
+    </swa:Window>
+    <swa:ApplicationFooter/>
+</swa:FullScreenBorderLayout>
+"""^^ui:Literal ;
+  rdfs:label "Application" ;
+  rdfs:subClassOf swa:Applications ;
+.
+swaeditor:ApplicationHeader
+  rdf:type ui:NodeClass ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:rootElement ;
+      spl:valueType ui:Element ;
+      rdfs:comment "The root element being edited." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:title ;
+      spl:valueType xsd:string ;
+      rdfs:comment "The title of the header." ;
+    ] ;
+  ui:prototype """
+<div class=\"ui-layout-north swaeditor-header\">
+    <table class=\"swaeditor-application-header-table\">
+        <tr>
+            <td class=\"swaeditor-application-header-td\">
+                <div id=\"swa-dialog-parent\" class=\"swa-none\"/>
+                <a href=\"{= IF(swa:falseOrUnbound(?suppressHome), teamwork:homeLink(), ?none) }\">
+                    <div class=\"swaeditor-logo\"/>
+                </a>
+            </td>
+            <td class=\"swa-width-one-hundred-percent\">
+                <div class=\"swaeditor-application-header-form-editor\">
+                    <span>TopBraid Form Editor</span>
+                    <ui:if ui:condition=\"{= bound(?title) }\">
+                        <span>&nbsp;-&nbsp;{= ?title }</span>
+                    </ui:if>
+                </div>
+            </td>
+            <td class=\"swaeditor-application-header-show-source\">
+                <a href=\"javascript:void(0)\" onclick=\"swaeditor.showSourceCode('{= ui:encodeNode(?rootElement, true) }')\">Show&nbsp;Source&nbsp;Code</a>
+            </td>
+        </tr>
+    </table>
+</div>
+"""^^ui:Literal ;
+  rdfs:label "Application header" ;
+  rdfs:subClassOf swa:ApplicationElements ;
+.
+swaeditor:ClassFormEditorApplication
+  rdf:type ui:NodeClass ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:class ;
+      spl:valueType rdfs:Class ;
+      rdfs:comment "The class to edit the form of." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:graph ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The graph containing the class definition." ;
+    ] ;
+  ui:prototype """
+<ui:setContext ui:queryGraph=\"{= ui:unionOfGraphs(ui:graphWithImports(swa:configGraph()), ?graph) }\">
+    <ui:group default:title=\"Class {= ui:label(?class) } ({= ?class })\" let:form=\"{= swa:directForm(?class) }\">
+        <ui:if ui:condition=\"{= bound(?form) }\">
+            <swaeditor:Application arg:rootElement=\"{= ?form }\"/>
+        </ui:if>
+        <ui:else>
+            <swaeditor:generateDefaultForm arg:queryGraph=\"{= ?graph }\" arg:suppressSKOS=\"{= false }\" ui:this=\"{= ?class }\"/>
+            <swaeditor:Application arg:rootElement=\"{= swa:directForm(?class) }\"/>
+        </ui:else>
+    </ui:group>
+</ui:setContext>
+"""^^ui:Literal ;
+  rdfs:label "Class form editor application" ;
+  rdfs:subClassOf swa:Applications ;
+.
+swaeditor:CreateElementButton
+  rdf:type ui:NodeClass ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:toolTip ;
+      spl:valueType xsd:string ;
+      rdfs:comment "An optional tool tip text." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:class ;
+      spl:valueType xsd:string ;
+      rdfs:comment "E.g. level1Button." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:contextResourceGetter ;
+      spl:valueType xsd:string ;
+      rdfs:comment "JS code that gets the currently selected resource or an error." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:resourceSelectedEvent ;
+      spl:valueType xsd:string ;
+      rdfs:comment "The name of the event to fire when the new resource is created." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:resourceType ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The type of element to create." ;
+    ] ;
+  ui:prototype """
+<swa:Button arg:class=\"btn btn-default btn-xs swaeditor-create-button {= ?class }\" arg:iconClass=\"{= swaeditor:elementTypeIcon(?resourceType) }\" arg:id=\"Create-{= afn:localname(?resourceType) }\" arg:onClick=\"{= ui:functionCall(&quot;swaeditor.createElement&quot;, ?resourceType, ?contextResourceGetter, ?resourceSelectedEvent) }\" arg:toolTip=\"{= COALESCE(?toolTip, CONCAT(&quot;Create &quot;, ui:label(?resourceType))) }\"/>
+"""^^ui:Literal ;
+  rdfs:label "Create element button" ;
+  rdfs:subClassOf swa:ButtonElements ;
+.
+swaeditor:CreateElementHandler
+  rdf:type ui:NodeClass ;
+  ui:prototype """
+<ui:group let:node=\"{= BNODE() }\" let:parent=\"{= IF(((spl:instanceOf(?contextResource, swa:Object) || spl:instanceOf(?contextResource, swa:Objects)) || spl:instanceOf(?contextResource, swa:Subjects)), spl:subject(ui:child, ?contextResource), ?contextResource) }\">
+    <ui:group let:encoded=\"{= ui:encodeNode(?node, true) }\">
+        <ui:transaction ui:logMessage=\"Add {= ?resourceType } widget\" ui:metadata=\"{createdResource : &quot;{= ui:escapeJSON(fn:substring(?encoded, 2, (fn:string-length(?encoded) - 2))) }&quot;}\">
+            <ui:update ui:updateQuery=\"{!
+                    INSERT {
+                        ?node a ?resourceType .
+                        ?node ui:childIndex ?childIndex .
+                        ?parent ui:child ?node .
+                    }
+                    WHERE {
+                        BIND (spl:objectCount(?parent, ui:child) AS ?childCount) .
+                        BIND (?childCount AS ?childIndex) .
+                    } }\"/>
+            <ui:if ui:condition=\"{= ?resourceType = swa:Subjects }\">
+                <ui:update ui:updateQuery=\"{!
+                        INSERT {
+                            ?node arg:object ?objectVar .
+                            ?objectVar sp:varName &quot;this&quot; .
+                        }
+                        WHERE {
+                            BIND (BNODE() AS ?objectVar) .
+                        } }\"/>
+            </ui:if>
+        </ui:transaction>
+    </ui:group>
+</ui:group>
+"""^^ui:Literal ;
+  rdfs:label "Create element handler" ;
+  rdfs:subClassOf swa:CreateHandlers ;
+.
+swaeditor:DeleteElementHandler
+  rdf:type ui:NodeClass ;
+  ui:prototype """
+<ui:transaction ui:logMessage=\"Delete element\">
+    <swaeditor:moveChildElementsUp arg:childIndex=\"{= spl:object(?resource, ui:childIndex) }\" ui:this=\"{= spl:subject(ui:child, ?resource) }\"/>
+    <ui:update ui:updateQuery=\"{!
+            DELETE {
+                ?parent ui:child ?resource .
+            }
+            WHERE {
+                ?parent ui:child ?resource .
+            } }\"/>
+    <ui:update ui:updateQuery=\"{!
+            DELETE {
+                ?child ?p ?o .
+            }
+            WHERE {
+                ?resource (ui:child)* ?child .
+                ?child ?p ?o .
+            } }\"/>
+</ui:transaction>
+"""^^ui:Literal ;
+  ui:responseType ui:JSON ;
+  rdfs:comment "Deletes a given element, including its children and adjusting the index of the siblings with a higher index." ;
+  rdfs:label "Delete element handler" ;
+  rdfs:subClassOf swa:DestructorElements ;
+.
+swaeditor:DeleteForm
+  rdf:type ui:Service ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:class ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The class to delete the form of." ;
+    ] ;
+  ui:private "true"^^xsd:boolean ;
+  ui:prototype """
+<ui:setContext ui:queryGraph=\"{= swa:configGraph() }\">
+    <ui:group let:form=\"{= swa:directForm(?class) }\">
+        <swa:DeleteResourceHandler arg:resource=\"{= ?form }\"/>
+    </ui:group>
+</ui:setContext>
+"""^^ui:Literal ;
+  rdfs:label "Delete form" ;
+  rdfs:subClassOf ui:JSONServices ;
+.
+swaeditor:ElementFormGadget
+  rdf:type swa:Gadget ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:allowHistoryMode ;
+      spl:valueType xsd:boolean ;
+      rdfs:comment "True to have a \"Show history\" check box show up in view mode. This mode is currently only supported by the teamwork framework, not general SWA." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:allowLogMessage ;
+      spl:valueType xsd:boolean ;
+      rdfs:comment "True to provide an option to enter a log message when saving changes." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:editing ;
+      spl:valueType xsd:boolean ;
+      rdfs:comment "True to start in editing mode." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:footerPlugin ;
+      spl:valueType swa:SwitchableFormFooterPlugin ;
+      rdfs:comment "An optional component to show up in the lower right corner." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:readOnly ;
+      spl:valueType xsd:boolean ;
+      rdfs:comment "True to disallow switching to edit mode." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:showResourceActions ;
+      spl:valueType xsd:boolean ;
+      rdfs:comment "True to also display a button to run ResourceActions." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:resource ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The resource to display." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:resourceSelectedEvent ;
+      spl:valueType xsd:string ;
+      rdfs:comment "The name of the event to subscribe to so that the window can be reloaded if the resource changes. The event will also be re-published whenever the user follows a hyperlink on the form. The data payload of the event needs to be the URI of a resource." ;
+    ] ;
+  ui:prototype """
+<ui:setContext ui:varName=\"createLinkFunction\" ui:varValue=\"{= swa:createEventLink }\">
+    <ui:setContext let:formId=\"{= ui:uniqueId() }\" ui:varName=\"createEventLinkEvent\" ui:varValue=\"{= ?resourceSelectedEvent }\">
+        <ui:if ui:condition=\"{= bound(?resource) }\">
+            <swa:WindowTitleSetter arg:title=\"{= swaeditor:elementLabel(?resource) }\"/>
+            <swa:SwitchableForm arg:allowHistoryMode=\"{= ?allowHistoryMode }\" arg:allowLogMessage=\"{= ?allowLogMessage }\" arg:editable=\"{= (!bound(?readOnly)) || (!?readOnly) }\" arg:editing=\"{= ?editing }\" arg:formId=\"{= ?formId }\" arg:resource=\"{= ?resource }\" arg:showFooter=\"{= true }\" arg:showResourceActions=\"{= ?showResourceActions }\" arg:suppressHeader=\"{= true }\">
+                <ui:insert ui:into=\"bottomBar\">
+                    <ui:if ui:condition=\"{= bound(?footerPlugin) }\">
+                        <swa:Space/>
+                        <ui:dynamicView arg:resource=\"{= ?resource }\" ui:class=\"{= ?footerPlugin }\"/>
+                    </ui:if>
+                </ui:insert>
+            </swa:SwitchableForm>
+        </ui:if>
+        <swa:Subscribe arg:code=\"swa.handleChangeForSwitchableFormGadget(data, '{= ?formId }', '{= swa:currentWindowId() }')\" arg:event=\"org.topbraid.swa.change\"/>
+        <swa:SubscribeArgument arg:argumentName=\"resource\" arg:event=\"{= ?resourceSelectedEvent }\" arg:filter=\"swa.getFormResourceURI('{= ?formId }') != data\"/>
+    </ui:setContext>
+</ui:setContext>
+"""^^ui:Literal ;
+  rdfs:comment "A gadget consisting of a view form that can be switched to edit mode by the user." ;
+  rdfs:label "Element form gadget" ;
+  rdfs:subClassOf swa:Gadgets ;
+.
+swaeditor:ElementTreeChildren
+  rdf:type spin:SelectTemplate ;
+  spin:body [
+      rdf:type sp:Select ;
+      sp:orderBy (
+          [
+            sp:varName "childIndex" ;
+          ]
+        ) ;
+      sp:resultVariables (
+          [
+            sp:varName "node" ;
+          ]
+          [
+            sp:varName "label" ;
+          ]
+          [
+            sp:varName "leaf" ;
+          ]
+          [
+            sp:varName "icon" ;
+          ]
+          [
+            sp:varName "movable" ;
+          ]
+          [
+            sp:varName "metadata" ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object [
+                sp:varName "node" ;
+              ] ;
+            sp:predicate ui:child ;
+            sp:subject [
+                sp:varName "parent" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Filter ;
+            sp:expression [
+                rdf:type sp:or ;
+                sp:arg1 [
+                    rdf:type sp:not ;
+                    sp:arg1 [
+                        rdf:type sp:bound ;
+                        sp:arg1 [
+                            sp:varName "filterFunction" ;
+                          ] ;
+                      ] ;
+                  ] ;
+                sp:arg2 [
+                    rdf:type spif:invoke ;
+                    sp:arg1 [
+                        sp:varName "filterFunction" ;
+                      ] ;
+                    sp:arg2 [
+                        sp:varName "node" ;
+                      ] ;
+                  ] ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:notExists ;
+                sp:elements (
+                    [
+                      sp:object [
+                          sp:varName "child" ;
+                        ] ;
+                      sp:predicate ui:child ;
+                      sp:subject [
+                          sp:varName "node" ;
+                        ] ;
+                    ]
+                  ) ;
+              ] ;
+            sp:variable [
+                sp:varName "leaf" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type swaeditor:elementLabel ;
+                arg:element [
+                    sp:varName "node" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "label" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type swaeditor:elementIcon ;
+                arg:element [
+                    sp:varName "node" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "icon" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:not ;
+                sp:arg1 [
+                    rdf:type swa:isReadOnlyTriple ;
+                    sp:arg1 [
+                        sp:varName "parent" ;
+                      ] ;
+                    sp:arg2 ui:child ;
+                    sp:arg3 [
+                        sp:varName "node" ;
+                      ] ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "movable" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:coalesce ;
+                sp:arg1 [
+                    rdf:type spl:object ;
+                    sp:arg1 [
+                        sp:varName "node" ;
+                      ] ;
+                    sp:arg2 ui:childIndex ;
+                  ] ;
+                sp:arg2 0 ;
+              ] ;
+            sp:variable [
+                sp:varName "childIndex" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type afn:localname ;
+                sp:arg1 [
+                    rdf:type spl:object ;
+                    sp:arg1 [
+                        sp:varName "node" ;
+                      ] ;
+                    sp:arg2 rdf:type ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "metadata" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:private "true"^^xsd:boolean ;
+  rdfs:comment "A template that delivers all ui:child elements of a given parent element." ;
+  rdfs:label "Element tree children" ;
+  rdfs:subClassOf swa:TreeChildrenTemplates ;
+.
+swaeditor:ElementTreeDataProvider
+  rdf:type swa:TreeDataProvider ;
+  arg:treeChildrenTemplate swaeditor:ElementTreeChildren ;
+  arg:treePathTemplate swaeditor:ElementTreePath ;
+  arg:treeRootsTemplate swaeditor:ElementTreeRoots ;
+  rdfs:comment "Displays a tree of SWP elements based on their ui:child hierarchy." ;
+  rdfs:label "Element tree data provider" ;
+.
+swaeditor:ElementTreeGadget
+  rdf:type swa:Gadget ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:editable ;
+      spl:valueType xsd:boolean ;
+      rdfs:comment "True to have a button to create classes appear under the tree." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:refreshEvent ;
+      spl:valueType xsd:string ;
+      rdfs:comment "The name of an event that causes the tree to refresh itself." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:rootElement ;
+      spl:valueType ui:Element ;
+      rdfs:comment "The root element of the tree." ;
+    ] ;
+  ui:prototype """
+<ui:group>
+    <div class=\"ui-layout-content\">
+        <swa:Tree arg:checkDropFunction=\"swaeditor.checkDrop\" arg:dataProvider=\"{= swaeditor:ElementTreeDataProvider }\" arg:draggable=\"{= true }\" arg:id=\"{= ?treeId }\" arg:onLoaded=\"swa.openTreeRoots('{= ?treeId }')\" arg:onSelect=\"{= swa:publishEvent(?resourceSelectedEvent, &quot;resource&quot;) }\" arg:root=\"{= ?rootElement }\" arg:treeMoveHandler=\"{= swaeditor:ElementTreeMoveHandler }\"/>
+    </div>
+    <div class=\"swa-form-footer\">
+        <div class=\"swa-float-left\">
+            <swaeditor:CreateElementButton arg:class=\"level2Button level3Button\" arg:contextResourceGetter=\"swa.getSelectedTreeResourceOrError('{= ?treeId }', 'Error: Please select a parent node first.')\" arg:resourceSelectedEvent=\"{= ?resourceSelectedEvent }\" arg:resourceType=\"{= swa:Objects }\" arg:toolTip=\"Create property widget\"/>
+            <swaeditor:CreateElementButton arg:class=\"level2Button level3Button\" arg:contextResourceGetter=\"swa.getSelectedTreeResourceOrError('{= ?treeId }', 'Error: Please select a parent node first.')\" arg:resourceSelectedEvent=\"{= ?resourceSelectedEvent }\" arg:resourceType=\"{= swa:Subjects }\" arg:toolTip=\"Create inverse property widget\"/>
+            <swaeditor:CreateElementButton arg:class=\"level1Button\" arg:contextResourceGetter=\"swa.getSelectedTreeResourceOrError('{= ?treeId }', 'Error: Please select a parent node first.')\" arg:resourceSelectedEvent=\"{= ?resourceSelectedEvent }\" arg:resourceType=\"{= swa:ObjectsEnum }\" arg:toolTip=\"Create section (swa:ObjectsEnum)\"/>
+            <swaeditor:CreateElementButton arg:class=\"level1Button\" arg:contextResourceGetter=\"swa.getSelectedTreeResourceOrError('{= ?treeId }', 'Error: Please select a parent node first.')\" arg:resourceSelectedEvent=\"{= ?resourceSelectedEvent }\" arg:resourceType=\"{= swa:ObjectsPlaceholder }\" arg:toolTip=\"Create section that will contain all other relevant properties (swa:ObjectsPlaceholder)\"/>
+        </div>
+        <div class=\"swa-float-right\">
+            <swa:Button arg:class=\"btn btn-default btn-xs\" arg:iconClass=\"icon-delete\" arg:id=\"deleteButton\" arg:onClick=\"{= ui:functionCall(&quot;swaeditor.deleteElement&quot;, ?resourceSelectedEvent) }\" arg:toolTip=\"Delete selected element\"/>
+        </div>
+        <div class=\"swa-clear-both\"/>
+    </div>
+    <swa:Subscribe arg:code=\"swaeditor.handleChanges(data, '{= ?treeId }')\" arg:event=\"org.topbraid.swa.change\"/>
+    <swa:Subscribe arg:code=\"swa.selectTreeNode('{= ?treeId }', data);swaeditor.updateCreateButtons();\" arg:event=\"{= ?resourceSelectedEvent }\"/>
+    <ui:if ui:condition=\"{= bound(?refreshEvent) }\">
+        <swa:Subscribe arg:code=\"swa.refreshTree('{= ?treeId }')\" arg:event=\"{= ?refreshEvent }\"/>
+    </ui:if>
+</ui:group>
+"""^^ui:Literal ;
+  rdfs:comment "A gadget displaying a UI element tree. The tree publishes an event whenever the user selects an element." ;
+  rdfs:label "Element tree gadget" ;
+  rdfs:subClassOf swa:TreeGadgets ;
+.
+swaeditor:ElementTreeMoveHandler
+  rdf:type swa:TreeMoveHandlerClass ;
+  ui:prototype """
+<ui:transaction let:oldChildIndex=\"{= spl:object(?child, ui:childIndex) }\" let:oldParent=\"{= spl:subject(ui:child, ?child) }\" ui:logMessage=\"Moved element\">
+    <ui:update ui:updateQuery=\"{!
+            DELETE {
+                ?oldParent ui:child ?child .
+                ?child ui:childIndex ?oldChildIndex .
+            }
+            WHERE {
+            } }\"/>
+    <ui:if ui:condition=\"{= ?oldParent = ?parent }\">
+        <ui:if ui:condition=\"{= ?oldChildIndex &lt; ?childIndex }\">
+            <swaeditor:moveChildElements arg:add=\"{= -1 }\" arg:endIndex=\"{= ?childIndex }\" arg:startIndex=\"{= ?oldChildIndex }\" ui:this=\"{= ?oldParent }\"/>
+            <ui:addPropertyValue arg:property=\"{= ui:childIndex }\" arg:value=\"{= ?childIndex - 1 }\" ui:this=\"{= ?child }\"/>
+        </ui:if>
+        <ui:else>
+            <swaeditor:moveChildElements arg:add=\"{= 1 }\" arg:endIndex=\"{= ?oldChildIndex }\" arg:startIndex=\"{= ?childIndex }\" ui:this=\"{= ?oldParent }\"/>
+            <ui:addPropertyValue arg:property=\"{= ui:childIndex }\" arg:value=\"{= ?childIndex }\" ui:this=\"{= ?child }\"/>
+        </ui:else>
+    </ui:if>
+    <ui:else>
+        <swaeditor:moveChildElementsUp arg:childIndex=\"{= ?oldChildIndex }\" ui:this=\"{= ?oldParent }\"/>
+        <swaeditor:moveChildElementsDown arg:childIndex=\"{= ?childIndex }\" ui:this=\"{= ?parent }\"/>
+        <ui:addPropertyValue arg:property=\"{= ui:childIndex }\" arg:value=\"{= ?childIndex }\" ui:this=\"{= ?child }\"/>
+    </ui:else>
+    <ui:update ui:updateQuery=\"{!
+            INSERT {
+                ?parent ui:child ?child .
+            }
+            WHERE {
+            } }\"/>
+</ui:transaction>
+"""^^ui:Literal ;
+  rdfs:label "Element tree move handler" ;
+  rdfs:subClassOf swa:TreeMoveHandlers ;
+.
+swaeditor:ElementTreePath
+  rdf:type spin:SelectTemplate ;
+  spin:body [
+      rdf:type sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "path" ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:shortestSubjectsPath ;
+                sp:arg1 [
+                    sp:varName "node" ;
+                  ] ;
+                sp:arg2 ui:child ;
+                sp:arg3 [
+                    sp:varName "root" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "path" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:private "true"^^xsd:boolean ;
+  rdfs:label "Element tree path" ;
+  rdfs:subClassOf swa:TreePathTemplates ;
+.
+swaeditor:ElementTreeRoots
+  rdf:type spin:SelectTemplate ;
+  spin:body [
+      rdf:type sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "node" ;
+          ]
+          [
+            sp:varName "label" ;
+          ]
+          [
+            sp:varName "leaf" ;
+          ]
+          [
+            sp:varName "icon" ;
+          ]
+          [
+            sp:varName "movable" ;
+          ]
+          [
+            sp:varName "metadata" ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                sp:varName "root" ;
+              ] ;
+            sp:variable [
+                sp:varName "node" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type swaeditor:elementLabel ;
+                arg:element [
+                    sp:varName "node" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "label" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:notExists ;
+                sp:elements (
+                    [
+                      sp:object [
+                          sp:varName "anyChild" ;
+                        ] ;
+                      sp:predicate ui:child ;
+                      sp:subject [
+                          sp:varName "node" ;
+                        ] ;
+                    ]
+                  ) ;
+              ] ;
+            sp:variable [
+                sp:varName "leaf" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type swaeditor:elementIcon ;
+                arg:element [
+                    sp:varName "node" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "icon" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression "false"^^xsd:boolean ;
+            sp:variable [
+                sp:varName "movable" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type afn:localname ;
+                sp:arg1 [
+                    rdf:type spl:object ;
+                    sp:arg1 [
+                        sp:varName "node" ;
+                      ] ;
+                    sp:arg2 rdf:type ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "metadata" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:private "true"^^xsd:boolean ;
+  rdfs:comment "A template that delivers the roots of an SWA element tree. It will simply return the information derived from the ?root itself, i.e. the root is mandatory." ;
+  rdfs:label "Element tree roots" ;
+  rdfs:subClassOf swa:TreeRootsTemplates ;
+.
+swaeditor:ModeCheckBoxEditor
+  rdf:type swa:ObjectEditorClass ;
+  ui:prototype """
+<ui:group>
+    <ui:forEach ui:resultSet=\"{#
+            SELECT ?name ?label
+            WHERE {
+                GRAPH ui:graph {
+                    ?mode a swa:Mode .
+                    ?mode swa:modeName ?name .
+                    ?mode rdfs:label ?label .
+                } .
+            } }\">
+        <div class=\"checkbox\">
+        	<input id=\"{= ?name }ModeCheckbox\" name=\"hideInModesCheckbox\" onclick=\"toggleHideInModesCheckBox(this, '{= ?name }')\" type=\"checkbox\"/>
+        	<label for=\"{= ?name }ModeCheckbox\">{= ?label }</label>
+        </div>
+        <swa:Space/>
+        <swa:Space/>
+        <swa:Space/>
+        <swa:Space/>
+    </ui:forEach>
+    <swa:AbstractTextFieldEditor arg:inputType=\"hidden\" arg:suppressLanguage=\"{= true }\" ui:args=\"*\"/>
+    <script>$().ready(function(){
+var modesInWhichToBeHiddenList = $(\".test-hideInModes\").val();
+var modesInWhichToBeHidden = modesInWhichToBeHiddenList.split(',');
+   	    var mode = modesInWhichToBeHidden.shift();
+   	    while (mode != null) {
+  var checkBoxId = mode + \"ModeCheckbox\";
+  $(\"#\" + checkBoxId).prop('checked', true);
+   	      mode = modesInWhichToBeHidden.shift();
+}
+  });
+  function toggleHideInModesCheckBox(checkBoxElement, mode) {
+if (checkBoxElement.checked) {
+  hideInModesAdd(mode);
+} else {
+  hideInModesRemove(mode);
+}
+  }
+  function hideInModesAdd(mode) {
+var modesInWhichToBeHiddenList = $(\".test-hideInModes\").val();
+var modesInWhichToBeHidden = modesInWhichToBeHiddenList.split(',');
+	    var modeIndex = modesInWhichToBeHidden.indexOf(mode);
+if (modeIndex == -1) { // mode is not already in the list
+  modesInWhichToBeHidden.push(mode);
+  $(\".test-hideInModes\").val(removeLeadingComma(modesInWhichToBeHidden.toString()));
+}
+  }
+  function hideInModesRemove(mode) {
+var modesInWhichToBeHiddenList = $(\".test-hideInModes\").val();
+var modesInWhichToBeHidden = modesInWhichToBeHiddenList.split(',');
+	    var modeIndex = modesInWhichToBeHidden.indexOf(mode);
+if (modeIndex &gt;= 0) { // mode is in the list
+  modesInWhichToBeHidden.splice(modeIndex, 1);
+  $(\".test-hideInModes\").val(removeLeadingComma(modesInWhichToBeHidden.toString()));
+}
+  }
+  function removeLeadingComma(str) {
+if (str != undefined &amp;&amp; str != null &amp;&amp; str.charAt(0) == ',') {
+  if (str.length &gt; 1) {
+return str.substring(1);
+  } else {
+return \"\";
+  }
+} else {
+  return str;
+}
+  }</script>
+</ui:group>
+"""^^ui:Literal ;
+  rdfs:label "Mode check box editor" ;
+  rdfs:subClassOf swa:ObjectEditor ;
+.
+swaeditor:ObjectPropertyEditor
+  rdf:type swa:ObjectEditorClass ;
+  ui:private "true"^^xsd:boolean ;
+  ui:prototype """
+<select class=\"form-control\" letrs:rps=\"{#
+        SELECT DISTINCT ?property ?label
+        WHERE {
+            {
+                {
+                    ?parent ui:child ?subject .
+                    ?root ui:child ?parent .
+                    ?class ui:instanceView ?root .
+                    ?property spl:relevantPropertyAtClass ?class .
+                }
+                UNION
+                {
+                    BIND (?object AS ?property) .
+                } .
+                FILTER (swa:isNotHiddenProperty(?property) || (?property IN (rdfs:label, rdfs:comment))) .
+            } .
+            BIND (ui:label(?property) AS ?label) .
+        }
+        ORDER BY (?label) }\" name=\"new-{= ?uid }\">
+    <ui:if ui:condition=\"{= !bound(?object) }\">
+        <option/>
+    </ui:if>
+    <ui:forEach ui:resultSet=\"{= ?rps }\">
+        <option selected=\"{= IF((?object = ?property), &quot;selected&quot;, ?none) }\" value=\"&lt;{= ?property }&gt;\">{= ?label }</option>
+    </ui:forEach>
+</select>
+"""^^ui:Literal ;
+  rdfs:comment "An auto-complete field of \"matching\" properties for the arg:property argument of an swa:AbstractObject." ;
+  rdfs:label "Object property editor" ;
+  rdfs:subClassOf swa:ObjectEditor ;
+.
+swaeditor:ObjectTypeEditor
+  rdf:type swa:ObjectEditorClass ;
+  ui:prototype """
+<span let:name=\"new-{= ?uid }\">
+    <select class=\"form-control {= swa:testClass(?predicate) }\" name=\"{= ?name }\">
+        <option selected=\"{= IF((?object = swa:Objects), &quot;selected&quot;, ?none) }\" value=\"{= ui:encodeNode(swa:Objects) }\">Based on property's definition</option>
+        <option selected=\"{= IF((?object = swa:Object), &quot;selected&quot;, ?none) }\" value=\"{= ui:encodeNode(swa:Object) }\">Allow at most 1 value</option>
+    </select>
+</span>
+"""^^ui:Literal ;
+  rdfs:comment "Allows the user to set the rdf:type of the current resource via a checkbox entitled \"Allow at most one value\" (swa:Object), while swa:Objects is the default." ;
+  rdfs:label "Object type editor" ;
+  rdfs:subClassOf swa:ObjectEditor ;
+.
+swaeditor:ObjectTypeViewer
+  rdf:type swa:ObjectViewerClass ;
+  ui:prototype """
+<div class=\"swa-shifted-label\">{= IF((?object = swa:Objects), \"Based on property's definition\", \"Allow at most 1 value\") }</div>
+"""^^ui:Literal ;
+  rdfs:label "Object type viewer" ;
+  rdfs:subClassOf swa:ObjectViewer ;
+.
+swaeditor:WidgetDropDownEditor
+  rdf:type swa:ObjectEditorClass ;
+  ui:prototype """
+<span let:name=\"new-{= ?uid }\" let:range=\"{= swa:localRangeAtClass(swa:resourceType(?subject), ?predicate) }\">
+    <select class=\"form-control\" name=\"{= ?name }\">
+        <option/>
+        <ui:forEach ui:resultSet=\"{#
+                SELECT ?item ?label
+                WHERE {
+                    GRAPH ui:graph {
+                        ?item a ?range .
+                        FILTER NOT EXISTS {
+                            ?item ui:abstract true .
+                        } .
+                        FILTER NOT EXISTS {
+                            ?item ui:private true .
+                        } .
+                        BIND (ui:label(?item) AS ?label) .
+                    } .
+                }
+                ORDER BY (?label) }\">
+            <option selected=\"{= IF((?object = ?item), &quot;selected&quot;, ?none) }\" value=\"{= ui:encodeNode(?item) }\">{= ?label }</option>
+        </ui:forEach>
+    </select>
+</span>
+"""^^ui:Literal ;
+  rdfs:label "Widget drop down editor" ;
+  rdfs:subClassOf swa:ObjectEditor ;
+.
+swaeditor:defaultElementLabel
+  rdf:type spin:Function ;
+  spin:body [
+      rdf:type sp:Select ;
+      sp:resultVariables (
+          [
+            sp:varName "result" ;
+          ]
+        ) ;
+      sp:where (
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type ui:label ;
+                sp:arg1 [
+                    sp:varName "element" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "label" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:indexOf ;
+                sp:arg1 [
+                    sp:varName "label" ;
+                  ] ;
+                sp:arg2 ">" ;
+              ] ;
+            sp:variable [
+                sp:varName "endIndex" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type fn:substring ;
+                sp:arg1 [
+                    sp:varName "label" ;
+                  ] ;
+                sp:arg2 1 ;
+                sp:arg3 [
+                    rdf:type sp:add ;
+                    sp:arg1 [
+                        sp:varName "endIndex" ;
+                      ] ;
+                    sp:arg2 1 ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "raw" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type spif:indexOf ;
+                sp:arg1 [
+                    sp:varName "raw" ;
+                  ] ;
+                sp:arg2 "ui:childIndex" ;
+              ] ;
+            sp:variable [
+                sp:varName "ci" ;
+              ] ;
+          ]
+          [
+            rdf:type sp:Bind ;
+            sp:expression [
+                rdf:type sp:if ;
+                sp:arg1 [
+                    rdf:type sp:bound ;
+                    sp:arg1 [
+                        sp:varName "ci" ;
+                      ] ;
+                  ] ;
+                sp:arg2 [
+                    rdf:type sp:concat ;
+                    sp:arg1 [
+                        rdf:type fn:substring ;
+                        sp:arg1 [
+                            sp:varName "raw" ;
+                          ] ;
+                        sp:arg2 1 ;
+                        sp:arg3 [
+                            sp:varName "ci" ;
+                          ] ;
+                      ] ;
+                    sp:arg2 [
+                        rdf:type fn:substring ;
+                        sp:arg1 [
+                            sp:varName "raw" ;
+                          ] ;
+                        sp:arg2 [
+                            rdf:type sp:add ;
+                            sp:arg1 [
+                                rdf:type spif:indexOf ;
+                                sp:arg1 [
+                                    sp:varName "raw" ;
+                                  ] ;
+                                sp:arg2 "\"" ;
+                                sp:arg3 [
+                                    rdf:type sp:add ;
+                                    sp:arg1 [
+                                        sp:varName "ci" ;
+                                      ] ;
+                                    sp:arg2 16 ;
+                                  ] ;
+                              ] ;
+                            sp:arg2 2 ;
+                          ] ;
+                      ] ;
+                  ] ;
+                sp:arg3 [
+                    sp:varName "raw" ;
+                  ] ;
+              ] ;
+            sp:variable [
+                sp:varName "result" ;
+              ] ;
+          ]
+        ) ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:element ;
+      spl:valueType ui:Element ;
+      rdfs:comment "The ui:Element to get the label of." ;
+    ] ;
+  spin:returnType xsd:string ;
+  rdfs:label "default element label" ;
+  rdfs:subClassOf spin:Functions ;
+.
+swaeditor:elementIcon
+  rdf:type ui:Function ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:element ;
+      spl:valueType ui:Element ;
+      rdfs:comment "The ui:Element to get the icon for." ;
+    ] ;
+  spin:returnType xsd:string ;
+  ui:prototype """
+<ui:group let:type=\"{= spl:object(?element, rdf:type) }\">
+    <ui:if ui:condition=\"{= (?type = swa:Object) || (?type = swa:Objects) }\">
+        <ui:return ui:result=\"{= swa:resourceIcon(COALESCE(spl:object(?element, arg:predicate), rdf:type)) }\"/>
+    </ui:if>
+    <ui:else>
+        <ui:return ui:result=\"{= swaeditor:elementTypeIcon(?type) }\"/>
+    </ui:else>
+</ui:group>
+"""^^ui:Literal ;
+  rdfs:label "element icon" ;
+  rdfs:subClassOf ui:Functions ;
+.
+swaeditor:elementLabel
+  rdf:type ui:Function ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:element ;
+      spl:valueType ui:Element ;
+      rdfs:comment "The element to get the label of." ;
+    ] ;
+  spin:returnType xsd:string ;
+  ui:prototype """
+<ui:group let:type=\"{= spl:object(?element, rdf:type) }\">
+    <ui:if ui:condition=\"{= (((?type = swa:Object) || (?type = swa:Objects)) || (?type = swa:Subject)) || (?type = swa:Subjects) }\">
+        <ui:group let:predicate=\"{= spl:object(?element, arg:predicate) }\">
+            <ui:return ui:result=\"{= IF(bound(?predicate), ui:label(?predicate), &quot;Missing predicate&quot;) }\"/>
+        </ui:group>
+    </ui:if>
+    <ui:elseif ui:condition=\"{= (?type = swa:ObjectsEnum) || (?type = swa:ObjectsPlaceholder) }\">
+        <ui:return ui:result=\"{= COALESCE(spl:object(?element, arg:label), &quot;Missing label&quot;) }\"/>
+    </ui:elseif>
+    <ui:elseif ui:condition=\"{= ?type = ui:group }\">
+        <ui:return ui:result=\"Root Container\"/>
+    </ui:elseif>
+    <ui:return ui:result=\"Unexpected Node\"/>
+</ui:group>
+"""^^ui:Literal ;
+  rdfs:label "element label" ;
+  rdfs:subClassOf ui:Functions ;
+.
+swaeditor:elementTypeIcon
+  rdf:type ui:Function ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:elementType ;
+      spl:valueType rdfs:Class ;
+      rdfs:comment "The class of elements." ;
+    ] ;
+  spin:returnType xsd:string ;
+  ui:prototype """
+<ui:group>
+    <ui:if ui:condition=\"{= (?elementType = swa:Object) || (?elementType = swa:Objects) }\">
+        <ui:return ui:result=\"swa-icon-property\"/>
+    </ui:if>
+    <ui:elseif ui:condition=\"{= ?elementType = swa:ObjectsEnum }\">
+        <ui:return ui:result=\"swa-icon-properties\"/>
+    </ui:elseif>
+    <ui:elseif ui:condition=\"{= ?elementType = swa:ObjectsPlaceholder }\">
+        <ui:return ui:result=\"swa-icon-objects-placeholder\"/>
+    </ui:elseif>
+    <ui:elseif ui:condition=\"{= ?elementType = swa:Subjects }\">
+        <ui:return ui:result=\"swa-icon-inverse-property\"/>
+    </ui:elseif>
+    <ui:elseif ui:condition=\"{= ?elementType = ui:group }\">
+        <ui:return ui:result=\"swa-icon-window\"/>
+    </ui:elseif>
+    <ui:return ui:result=\"swa-icon-element\"/>
+</ui:group>
+"""^^ui:Literal ;
+  rdfs:label "element type icon" ;
+  rdfs:subClassOf ui:Functions ;
+.
+swaeditor:generateDefaultForm
+  rdf:type ui:Method ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate arg:queryGraph ;
+      spl:valueType rdfs:Resource ;
+      rdfs:comment "The graph containing the domain model." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:suppressSKOS ;
+      spl:valueType xsd:boolean ;
+      rdfs:comment "If true, do not include predicates from SKOS in the Properties section." ;
+    ] ;
+  ui:prototype """
+<ui:transaction let:annotationEnum=\"{= BNODE() }\" let:enum=\"{= BNODE() }\" let:expr=\"{= BNODE() }\" let:graph=\"{= COALESCE(?queryGraph, ui:currentQueryGraph()) }\" let:root=\"{= BNODE() }\">
+    <ui:update ui:updateQuery=\"{!
+            INSERT {
+                ?this ui:instanceView ?root .
+                ?root a ui:group .
+                ?root ui:child ?enum .
+                ?root ui:child ?annotationEnum .
+                ?root ui:id &quot;form&quot; .
+                ?root default:hideIfEmpty true .
+                ?root default:subject ?expr .
+                ?expr sp:varName &quot;this&quot; .
+                ?enum a swa:ObjectsEnum .
+                ?enum arg:label &quot;Properties&quot; .
+                ?enum ui:childIndex 1 .
+                ?annotationEnum a swa:ObjectsEnum .
+                ?annotationEnum arg:label &quot;Annotations&quot; .
+                ?annotationEnum ui:childIndex 0 .
+                ?annotationEnum ui:child ?annObject .
+                ?annObject a swa:Objects .
+                ?annObject ui:childIndex ?index .
+                ?annObject arg:predicate rdfs:label .
+            }
+            WHERE {
+                BIND (BNODE() AS ?annObject) .
+            } }\"/>
+    <ui:forEach ui:indexVar=\"index\" ui:resultSet='{#
+            SELECT ?predicate
+            WHERE {
+                GRAPH ?graph {
+                    ?predicate spl:relevantPropertyAtClass ?this .
+                    FILTER (swa:falseOrUnbound(?suppressSKOS) || (?suppressSKOS &amp;&amp; (afn:namespace(?predicate) != \"http://www.w3.org/2004/02/skos/core#\"))) .
+                    FILTER swa:isNotHiddenProperty(?predicate) .
+                } .
+            }
+            ORDER BY (ui:label(?predicate)) }'>
+        <ui:update ui:updateQuery=\"{!
+                INSERT {
+                    ?enum ui:child ?object .
+                    ?object a swa:Objects .
+                    ?object ui:childIndex ?index .
+                    ?object arg:predicate ?predicate .
+                }
+                WHERE {
+                    BIND (BNODE() AS ?object) .
+                } }\"/>
+    </ui:forEach>
+</ui:transaction>
+"""^^ui:Literal ;
+  rdfs:comment """Generates a ui:prototype attached to a given class (?this) that has swa:Objects for each relevant property for that class. This can serve as a starting point of further manual edits.
+
+This method is called from the TBC menu item \"Create default SWA form\" at ui:instanceView.""" ;
+  rdfs:label "generate default form" ;
+  rdfs:subClassOf ui:Methods ;
+.
+swaeditor:moveChildElements
+  rdf:type ui:NodeClass ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:add ;
+      spl:valueType xsd:integer ;
+      rdfs:comment "The value to add to the childIndex (1 or -1)." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:endIndex ;
+      spl:valueType xsd:integer ;
+      rdfs:comment "The end index (inclusive)." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:startIndex ;
+      spl:valueType xsd:integer ;
+      rdfs:comment "The index to start with." ;
+    ] ;
+  ui:prototype """
+<ui:update ui:updateQuery=\"{!
+        DELETE {
+            ?child ui:childIndex ?oldIndex .
+        }
+        INSERT {
+            ?child ui:childIndex ?newIndex .
+        }
+        WHERE {
+            ?this ui:child ?child .
+            ?child ui:childIndex ?oldIndex .
+            FILTER ((?oldIndex &gt;= ?startIndex) &amp;&amp; (?oldIndex &lt; ?endIndex)) .
+            BIND ((?oldIndex + ?add) AS ?newIndex) .
+        } }\"/>
+"""^^ui:Literal ;
+  rdfs:comment "Changes the ui:childIndex of all children within a given start and end index so that they are moved down or down, making room for another childIndex. ?this must point to the parent." ;
+  rdfs:label "Move child elements" ;
+  rdfs:subClassOf ui:Methods ;
+.
+swaeditor:moveChildElementsDown
+  rdf:type ui:NodeClass ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:childIndex ;
+      spl:valueType xsd:integer ;
+      rdfs:comment "The child index that shall be replaced." ;
+    ] ;
+  ui:prototype """
+<ui:update ui:updateQuery=\"{!
+        DELETE {
+            ?sibling ui:childIndex ?siblingIndex .
+        }
+        INSERT {
+            ?sibling ui:childIndex ?newIndex .
+        }
+        WHERE {
+            ?this ui:child ?sibling .
+            ?sibling ui:childIndex ?siblingIndex .
+            FILTER (?siblingIndex &gt;= ?childIndex) .
+            BIND ((?siblingIndex + 1) AS ?newIndex) .
+        } }\"/>
+"""^^ui:Literal ;
+  rdfs:comment "Changes the ui:childIndex of all children starting with a given index so that they are moved down, making room at the specified child index. ?this must point to the parent." ;
+  rdfs:label "Move child elements down" ;
+  rdfs:subClassOf ui:Methods ;
+.
+swaeditor:moveChildElementsUp
+  rdf:type ui:NodeClass ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate arg:childIndex ;
+      spl:valueType xsd:integer ;
+      rdfs:comment "The child index that shall be replaced." ;
+    ] ;
+  ui:prototype """
+<ui:update ui:updateQuery=\"{!
+        DELETE {
+            ?sibling ui:childIndex ?siblingIndex .
+        }
+        INSERT {
+            ?sibling ui:childIndex ?newIndex .
+        }
+        WHERE {
+            ?this ui:child ?sibling .
+            ?sibling ui:childIndex ?siblingIndex .
+            FILTER (?siblingIndex &gt; ?childIndex) .
+            BIND ((?siblingIndex - 1) AS ?newIndex) .
+        } }\"/>
+"""^^ui:Literal ;
+  rdfs:comment "Changes the ui:childIndex of all children behind a given index so that they are moved up, replacing the specified child index. ?this must point to the parent." ;
+  rdfs:label "Move child elements up" ;
+  rdfs:subClassOf ui:Methods ;
+.
+ui:Element
+  ui:instanceView """
+<swaeditor:Application arg:rootElement=\"{= ?this }\" ui:id=\"app\"/>
+"""^^ui:Literal ;
+  ui:method swaeditor:moveChildElements ;
+  ui:method swaeditor:moveChildElementsDown ;
+  ui:method swaeditor:moveChildElementsUp ;
+.
+ui:NodeClass
+  ui:instanceView """
+<swaeditor:Application arg:rootElement=\"{= spl:object(?this, ui:prototype) }\" ui:id=\"app\"/>
+"""^^ui:Literal ;
+.
+ui:group
+  ui:instanceView """
+<ui:group default:subject=\"{= ?this }\" default:tabular=\"{= true }\" ui:id=\"form\">
+    <swa:ObjectsEnum arg:label=\"Form modes\">
+        <swa:Object arg:label=\"suitable\" arg:predicate=\"{= ui:id }\"/>
+    </swa:ObjectsEnum>
+</ui:group>
+"""^^ui:Literal ;
+.
+[
+  rdf:type ui:group ;
+  ui:child [
+      rdf:type swa:ObjectsEnum ;
+      arg:label "Properties" ;
+    ] ;
+  ui:id "form" ;
+].
+[
+  arg:hideIfEmpty "true"^^xsd:boolean ;
+].
+[
+  arg:label "Test group" ;
+].

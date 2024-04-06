@@ -1,0 +1,253 @@
+# baseURI: http://uispin.org/htmlsvg
+# imports: http://uispin.org/html
+
+@prefix html: <http://uispin.org/html#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix svg: <http://uispin.org/svg#> .
+@prefix ui: <http://uispin.org/ui#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+html:A
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Animate
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:AnimateColor
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:AnimateMotion
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:AnimateTransform
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Animation
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Audio
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Circle
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Defs
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Desc
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Discard
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Ellipse
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Font
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Font-face
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Font-face-src
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Font-face-uri
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:ForeignObject
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:G
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Glyph
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Handler
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Hkern
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Image
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Line
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:LinearGradient
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Listener
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Marker
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Metadata
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Missing-glyph
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Mpath
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Path
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Polygon
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Polyline
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Prefetch
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:RadialGradient
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Rect
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:SVGElements
+  rdf:type ui:NodeClass ;
+  rdfs:label "SVG elements"^^xsd:string ;
+  rdfs:subClassOf html:Elements ;
+.
+html:Script
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Set
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:SolidColor
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Stop
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Svg
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Switch
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Tbreak
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Text
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:TextArea
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Title
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Tspan
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Use
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:Video
+  rdf:type ui:NodeClass ;
+  rdfs:subClassOf html:SVGElements ;
+.
+html:d
+  rdf:type html:Attribute ;
+  rdfs:subPropertyOf html:attributes ;
+.
+html:fill
+  rdf:type html:Attribute ;
+  rdfs:subPropertyOf html:attributes ;
+.
+html:marker-end
+  rdf:type html:Attribute ;
+  rdfs:subPropertyOf html:attributes ;
+.
+html:markerHeight
+  rdf:type html:Attribute ;
+  rdfs:subPropertyOf html:attributes ;
+.
+html:markerUnits
+  rdf:type html:Attribute ;
+  rdfs:subPropertyOf html:attributes ;
+.
+html:markerWidth
+  rdf:type html:Attribute ;
+  rdfs:subPropertyOf html:attributes ;
+.
+html:orient
+  rdf:type html:Attribute ;
+  rdfs:subPropertyOf html:attributes ;
+.
+html:points
+  rdf:type html:Attribute ;
+  rdfs:subPropertyOf html:attributes ;
+.
+html:refX
+  rdf:type html:Attribute ;
+  rdfs:subPropertyOf html:attributes ;
+.
+html:refY
+  rdf:type html:Attribute ;
+  rdfs:subPropertyOf html:attributes ;
+.
+<http://uispin.org/htmlsvg>
+  rdf:type owl:Ontology ;
+  rdfs:comment "Declarations of SVG elements as prefix-less entities, for embedding into HTML."^^xsd:string ;
+  owl:imports <http://uispin.org/html> ;
+.

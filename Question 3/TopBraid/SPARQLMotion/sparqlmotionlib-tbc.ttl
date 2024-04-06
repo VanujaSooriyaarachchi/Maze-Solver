@@ -1,0 +1,144 @@
+# baseURI: http://topbraid.org/sparqlmotionlib-tbc
+# imports: http://topbraid.org/sparqlmotionlib-tb
+
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sm: <http://topbraid.org/sparqlmotion#> .
+@prefix sml: <http://topbraid.org/sparqlmotionlib#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sml:DisplayEditForm
+  rdf:type sm:Module ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:defaultValue "instance" ;
+      spl:predicate sm:outputVariable ;
+      spl:valueType xsd:string ;
+      rdfs:comment "the name of the variable that can be used to access the edited instance in the next modules" ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate sml:buttonLabel ;
+      spl:valueType xsd:string ;
+      rdfs:comment "the label of the button under the form" ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate sml:title ;
+      spl:valueType xsd:string ;
+      rdfs:comment "the title of the edit form" ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate sml:class ;
+      spl:valueType rdfs:Class ;
+      rdfs:comment "the class of the instance to edit" ;
+    ] ;
+  rdfs:comment "Displays a form that enables end-users to edit an instance of a given class. The new triples will be added to a run-time RDF graph and can then be queried by the next modules in the script. Note that the output RDF graph may contain other triples (such as imports or form declarations) which should be ignored - the only \"save\" triples to get are the direct property values of the resource specified by outputVariable. Currently only supported in TopBraid Composer." ;
+  rdfs:label "Display edit form" ;
+  rdfs:subClassOf sml:RDFProcessingModules ;
+.
+sml:EnterLiteral
+  rdf:type sm:Module ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:defaultValue xsd:string ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate sml:datatype ;
+      rdfs:comment "The type of the value to enter (e.g. xsd:int). Default: xsd:string." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate sml:text ;
+      spl:valueType xsd:string ;
+      rdfs:comment "the text that will appear at the prompt" ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate sm:outputVariable ;
+      rdfs:comment "The name of the variable that will contain the entered literal." ;
+    ] ;
+  rdfs:comment "Prompts the user to enter a literal. The resulting value will be bound as literal to the variable specified as sm:outputVariable. Currently only supported in TopBraid Composer." ;
+  rdfs:label "Enter literal" ;
+  rdfs:subClassOf sml:ImportFromVariousModules ;
+.
+sml:SelectInstance
+  rdf:type sm:Module ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate sml:buttonLabel ;
+      spl:valueType xsd:string ;
+      rdfs:comment "the label of the button to continue" ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate sml:selectInstanceClass ;
+      rdfs:comment "The (optional) class that shall be used as root of a class/instance selection box." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate sml:title ;
+      spl:valueType xsd:string ;
+      rdfs:comment "the title of the selection window" ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate sm:outputVariable ;
+      rdfs:comment "The name of the variable that shall contain the selected resource." ;
+    ] ;
+  rdfs:comment "Prompts the user to select an instance by class, and binds the selected resource into the specified output variable. If not selectInstanceClass is specified, then the selection would start at the root class. Currently only supported in TopBraid Composer." ;
+  rdfs:label "Select instance" ;
+  rdfs:subClassOf sml:ImportFromVariousModules ;
+.
+sml:SelectResource
+  rdf:type sm:Module ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate sml:buttonLabel ;
+      spl:valueType xsd:string ;
+      rdfs:comment "the label of the button to continue" ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:optional "true"^^xsd:boolean ;
+      spl:predicate sml:title ;
+      spl:valueType xsd:string ;
+      rdfs:comment "the title of the selection window" ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Argument ;
+      spl:predicate sm:outputVariable ;
+      rdfs:comment "The name of the variable that shall hold the selected resource." ;
+    ] ;
+  spin:constraint [
+      rdf:type spl:Attribute ;
+      spl:maxCount 1 ;
+      spl:minCount 1 ;
+      spl:predicate sml:selectQuery ;
+      rdfs:comment "A SPARQL Select query that delivers the resources that shall be selectable in the UI box." ;
+    ] ;
+  rdfs:comment "Prompts the user to select one resource out of a list of resources delivered from a SPARQL query. The selected resource will be bound to the specified variable. Any RDF triples that come in as input are forwarded as output. Currently only supported in TopBraid Composer." ;
+  rdfs:label "Select resource" ;
+  rdfs:subClassOf sml:ImportFromVariousModules ;
+.
+sml:javaClass
+  rdf:type rdf:Property ;
+  rdfs:label "java class" ;
+.
+<http://topbraid.org/sparqlmotionlib-tbc>
+  rdf:type owl:Ontology ;
+  rdfs:comment "A library of SPARQLMotion modules that are (only) supported when executed inside of TopBraid Composer, and not via client-server interactions." ;
+  owl:imports <http://topbraid.org/sparqlmotionlib-tb> ;
+  owl:versionInfo "0.5.1" ;
+.
